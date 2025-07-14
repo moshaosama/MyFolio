@@ -6,7 +6,8 @@ MyFolio is a full-stack web application that empowers users to create and custom
 
 ---
 
-![Selfolio Banner]([https://your-image-url.com/banner.png](https://sdmntpreastus2.oaiusercontent.com/files/00000000-c10c-61f6-ba4e-4e7a4d03e166/raw?se=2025-07-14T20%3A30%3A18Z&sp=r&sv=2024-08-04&sr=b&scid=4fa45a6d-bb26-5d7c-a6fc-a9b043c2dca9&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-14T05%3A33%3A32Z&ske=2025-07-15T05%3A33%3A32Z&sks=b&skv=2024-08-04&sig=rSRmo2sjOF11/EDvsEfO4/sU%2Bk9B2ZqwvUKTwumZap4%3D))
+![MyFolio Banner](https://sdmntpreastus2.oaiusercontent.com/files/00000000-c10c-61f6-ba4e-4e7a4d03e166/raw?se=2025-07-14T20%3A30%3A18Z&sp=r&sv=2024-08-04&sr=b&scid=4fa45a6d-bb26-5d7c-a6fc-a9b043c2dca9&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-14T05%3A33%3A32Z&ske=2025-07-15T05%3A33%3A32Z&sks=b&skv=2024-08-04&sig=rSRmo2sjOF11/EDvsEfO4/sU%2Bk9B2ZqwvUKTwumZap4%3D)
+
 
 ## 🚀 Features
 

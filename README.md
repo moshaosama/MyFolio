@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
+# 💼 MyFolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Build and deploy your personal portfolio — with zero coding.**
 
-Currently, two official plugins are available:
+MyFolio is a full-stack web application that empowers users to create and customize their personal portfolios easily, using a no-code interface. Whether you're a student, freelancer, or developer, MyFolio helps you build a professional online presence in minutes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+![Selfolio Banner]((https://sdmntpreastus2.oaiusercontent.com/files/00000000-c10c-61f6-ba4e-4e7a4d03e166/raw?se=2025-07-14T20%3A30%3A18Z&sp=r&sv=2024-08-04&sr=b&scid=4fa45a6d-bb26-5d7c-a6fc-a9b043c2dca9&skoid=f28c0102-4d9d-4950-baf0-4a8e5f6cf9d4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-07-14T05%3A33%3A32Z&ske=2025-07-15T05%3A33%3A32Z&sks=b&skv=2024-08-04&sig=rSRmo2sjOF11/EDvsEfO4/sU%2Bk9B2ZqwvUKTwumZap4%3D))
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Features
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 🧩 Drag-and-drop / Form-based portfolio builder
+- 🎨 Modern, responsive templates (fully customizable)
+- ✍️ Editable sections: About, Projects, Skills, Contact, etc.
+- 🔐 Secure user authentication (JWT or OAuth)
+- 💾 Auto-save and real-time preview
+- 🌍 One-click deployment with custom subdomain (e.g. `yourname.myfolio.app`)
+- 📊 Basic analytics dashboard
+- 🧾 Download as PDF resume (optional)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Layer        | Tech Used                             |
+|--------------|----------------------------------------|
+| Frontend     | React, Tailwind CSS                   |
+| State Mgmt   | Context API, Redux, React Query       |
+| Backend      | Node.js, Express                      |
+| Database     | SQL (PostgreSQL / MySQL)              |
+| Auth         | JWT / Firebase Auth / OAuth           |
+| Deployment   | Vercel (Frontend), Render / Railway (Backend) |

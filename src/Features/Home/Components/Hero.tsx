@@ -1,4 +1,7 @@
+import { useOpenPopUpTemplateContext } from "../../Templates/Context/useOpenPopUpTemplate";
+
 const Hero = () => {
+  const { triggerOpenPopUp } = useOpenPopUpTemplateContext();
   return (
     <>
       <div className="flex flex-col items-center gap-5 justify-center text-white">
@@ -15,7 +18,10 @@ const Hero = () => {
         </p>
 
         <div className="flex max-sm:flex-col items-center gap-6">
-          <button className="cursor-pointer bg-gradient-to-l from-purple-600 hover:from-purple-800 to-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 p-4 w-40 rounded-xl font-semibold text-xl">
+          <button
+            onClick={triggerOpenPopUp}
+            className="cursor-pointer bg-gradient-to-l from-purple-600 hover:from-purple-800 to-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 p-4 w-40 rounded-xl font-semibold text-xl"
+          >
             Get Started
           </button>
 

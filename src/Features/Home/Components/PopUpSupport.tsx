@@ -5,7 +5,7 @@ import { useOpenPopUpSupportContext } from "../Context/useOpenPopUpSupport";
 import { FaCheck } from "react-icons/fa";
 
 const PopUpSupport = () => {
-  const { isOpen } = useOpenPopUpSupportContext();
+  const { isOpen, triggerOpenPopUp } = useOpenPopUpSupportContext();
 
   const [isCopyMobile, setIsCopyMobile] = useState(false);
   const [isCopyEmail, setIsCopyEmail] = useState(false);
@@ -36,6 +36,7 @@ const PopUpSupport = () => {
         )}
       >
         <PopUpCard
+          onCLick={triggerOpenPopUp}
           Footer="
 Thank you for supporting Selfolio! Your contribution helps us maintain and improve this free tool."
           Title="Support Selfolio"

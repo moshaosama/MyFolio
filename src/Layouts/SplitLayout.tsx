@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
+import NavbarHome from "./NavbarHome";
 
 const SplitLayout = () => {
   return (
     <>
-      <Navbar />
+      <NavbarHome />
       <Outlet />
       <Footer />
     </>

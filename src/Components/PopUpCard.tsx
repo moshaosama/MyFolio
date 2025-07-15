@@ -1,7 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
 import React from "react";
 import { CgClose } from "react-icons/cg";
-import { useOpenPopUpSupportContext } from "../Features/Home/Context/useOpenPopUpSupport";
 
 type FooterType = string | ReactElement;
 
@@ -11,6 +10,7 @@ interface PopUpCardProp {
   children: ReactNode;
   Footer: FooterType;
   width: string;
+  onCLick: () => void;
 }
 
 const PopUpCard = ({
@@ -19,8 +19,8 @@ const PopUpCard = ({
   children,
   description,
   width,
+  onCLick,
 }: PopUpCardProp) => {
-  const { triggerOpenPopUp } = useOpenPopUpSupportContext();
   return (
     <div className="fixed top-0 inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center">
       <div
@@ -33,7 +33,7 @@ const PopUpCard = ({
               <h1 className="text-2xl font-bold">{Title}</h1>
               <p className="text-gray-400">{description}</p>
             </div>
-            <div onClick={triggerOpenPopUp}>
+            <div onClick={onCLick}>
               <CgClose size={20} color="white" className="cursor-pointer" />
             </div>
           </div>

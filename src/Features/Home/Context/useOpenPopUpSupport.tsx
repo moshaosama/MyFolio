@@ -14,7 +14,7 @@ const OpenPopUpSupportContext = createContext<null | DataContext>(null);
 const OpenPopUpSupportProvider = ({
   children,
 }: OpenPopUpSupportProviderProps) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const triggerOpenPopUp = () => {
     setIsOpen(!isOpen);

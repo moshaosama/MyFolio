@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Footer from "./Footer";
+import Footer from "./CopyRight";
 import NavbarHome from "./NavbarHome";
 
 const SplitLayout = () => {

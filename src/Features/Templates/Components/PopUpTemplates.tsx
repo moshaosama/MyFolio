@@ -1,10 +1,21 @@
 import { IoColorPaletteOutline } from "react-icons/io5";
 import PopUpCard from "../../../Components/PopUpCard";
+import { useOpenPopUpTemplateContext } from "../Context/useOpenPopUpTemplate";
+import cn from "../../../libs/cn";
 
 const PopUpTemplates = () => {
+  const { isOpen, triggerOpenPopUp } = useOpenPopUpTemplateContext();
   return (
-    <>
+    <div
+      className={cn(
+        isOpen
+          ? "opacity-100 z-10 max-h-screen"
+          : "opacity-0 z-0 max-h-0 hidden",
+        "transition-all duration-300"
+      )}
+    >
       <PopUpCard
+        onCLick={triggerOpenPopUp}
         Title="Choose a Template"
         description="Select a template to start building your portfolio"
         width="60pc"
@@ -17,8 +28,8 @@ const PopUpTemplates = () => {
           </div>
         }
       >
-        <div className="flex items-center gap-6">
-          <div className="w-72 bg-slate-700 hover:scale-[1.02] transition-all duration-300 rounded-xl">
+        <div className="flex max-sm:flex-col max-sm:gap-7 max-sm:overflow-y-scroll max-sm:h-[30pc] items-center gap-6">
+          <div className="w-72 bg-slate-700 max-sm:w-full hover:scale-[1.02] transition-all duration-300 rounded-xl">
             <div>
               <img
                 src="https://selfolio8.netlify.app/assets/templateOnePreview-BzxumhGX.png"
@@ -38,7 +49,7 @@ const PopUpTemplates = () => {
             </div>
           </div>
 
-          <div className="w-72 bg-gradient-to-l  from-purple-600/20  to-blue-600/20 hover:scale-[1.02] transition-all duration-300 rounded-xl">
+          <div className="w-72 bg-gradient-to-l max-sm:w-full from-purple-600/20  to-blue-600/20 hover:scale-[1.02] transition-all duration-300 rounded-xl">
             <div className="bg-gradient-to-l rounded-t-xl h-32 from-purple-600  to-blue-600">
               <i className="flex justify-center opacity-30 items-center h-32">
                 <IoColorPaletteOutline size={50} />
@@ -57,7 +68,7 @@ const PopUpTemplates = () => {
           </div>
         </div>
       </PopUpCard>
-    </>
+    </div>
   );
 };
 

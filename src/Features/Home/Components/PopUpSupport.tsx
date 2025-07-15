@@ -62,7 +62,7 @@ Thank you for supporting Selfolio! Your contribution helps us maintain and impro
                 navigator.clipboard.writeText("mohamedOSFekry@gmail.com");
                 triggerCopyEmail();
               }}
-              className="bg-gradient-to-l p-3 text-center  rounded-xl to-blue-500 from-blue-300 cursor-pointer hover:to-blue-600 hover:from-blue-400"
+              className="bg-gradient-to-l p-2 text-center  rounded-xl border to-blue-500 from-blue-300 cursor-pointer hover:to-blue-600 hover:from-blue-400"
             >
               <h1 className="font-bold">
                 {isCopyEmail ? (
@@ -98,7 +98,7 @@ Thank you for supporting Selfolio! Your contribution helps us maintain and impro
                 navigator.clipboard.writeText("+20 1004365707");
                 triggerCopyMobile();
               }}
-              className="bg-gradient-to-l p-3 text-center  rounded-xl to-purple-800 from-puto-purple-700 cursor-pointer hover:to-purple-900 hover:from-puto-purple-800"
+              className="bg-gradient-to-l p-2 text-center  rounded-xl border to-purple-800 from-puto-purple-700 cursor-pointer hover:to-purple-900 hover:from-puto-purple-800"
             >
               <h1 className="font-bold">
                 {isCopyMobile ? (

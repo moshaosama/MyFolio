@@ -1,13 +1,15 @@
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import React from "react";
 import { CgClose } from "react-icons/cg";
 import { useOpenPopUpSupportContext } from "../Features/Home/Context/useOpenPopUpSupport";
+
+type FooterType = string | ReactElement;
 
 interface PopUpCardProp {
   Title: string;
   description: string;
   children: ReactNode;
-  Footer: string;
+  Footer: FooterType;
   width: string;
 }
 

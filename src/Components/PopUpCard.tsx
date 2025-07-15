@@ -20,8 +20,11 @@ const PopUpCard = ({
 }: PopUpCardProp) => {
   const { triggerOpenPopUp } = useOpenPopUpSupportContext();
   return (
-    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center">
-      <div className="bg-slate-800 rounded-xl" style={{ width: width }}>
+    <div className="fixed top-0 inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center">
+      <div
+        className="bg-slate-800 rounded-xl max-sm:mx-2"
+        style={{ width: width }}
+      >
         <div className="border-b-1 border-b-gray-500 py-5">
           <div className="flex justify-between items-center mx-5">
             <div className="text-white flex flex-col">

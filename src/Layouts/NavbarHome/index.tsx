@@ -13,7 +13,7 @@ const NavbarHome = () => {
             <h1 className="text-white font-bold text-2xl">Myfolio</h1>
           </div>
 
-          <div className="flex items-center gap-5 text-[#d1d5dc]">
+          <div className="flex items-center gap-5 max-sm:gap-3 text-[#d1d5dc]">
             <a href="https://github.com/moshaosama" target="_blank">
               <FaGithub
                 size={30}

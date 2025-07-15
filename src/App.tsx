@@ -1,9 +1,9 @@
-import SplitLayout from "./Layouts/SplitLayout";
+import RouterPages from "./Routes/RouterPages";
 
 function App() {
   return (
     <>
-      <SplitLayout />
+      <RouterPages />
     </>
   );
 }

@@ -5,7 +5,7 @@ import Container from "../../Styles";
 const NavbarHome = () => {
   return (
     <>
-      <div className="bg-gradient-to-l py-5 to-indigo-950 from-blue-900">
+      <div className="bg-gradient-to-l py-5 to-indigo-950 from-blue-900 border-b-1 border-gray-600">
         <div className={cn(Container, "flex justify-between items-center")}>
           <div>
             <h1 className="text-white font-bold text-2xl">Myfolio</h1>

@@ -19,9 +19,15 @@ const Hero = () => {
             Get Started
           </button>
 
-          <button className="cursor-pointer bg-gray-600 hover:bg-gray-700 transition-all duration-300 hover:scale-105 p-4 border-1 border-gray-300 rounded-xl font-semibold text-xl">
-            🐛 Report Issue
-          </button>
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=mohamedOSFekry@gmail.com&su=Bug Report&body=Hi, I found a bug in..."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="cursor-pointer bg-gray-600 hover:bg-gray-700 transition-all duration-300 hover:scale-105 p-4 border-1 border-gray-300 rounded-xl font-semibold text-xl">
+              🐛 Report Issue
+            </button>
+          </a>
         </div>
       </div>
     </>

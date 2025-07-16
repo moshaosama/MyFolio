@@ -2,6 +2,7 @@ import { useOpenPopUpTemplateContext } from "../../Templates/Context/useOpenPopU
 
 const Hero = () => {
   const { triggerOpenPopUp } = useOpenPopUpTemplateContext();
+
   return (
     <>
       <div className="flex flex-col items-center gap-5 justify-center text-white">

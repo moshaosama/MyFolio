@@ -7,8 +7,8 @@ const NavbarTemplate = () => {
 
   return (
     <>
-      <div className="bg-[#2f3237] w-full flex justify-center gap-5">
-        <div className="flex justify-center gap-20 py-7 px-24 my-4 rounded-full bg-[#211f2a]">
+      <div className="bg-[#0f0d14] w-full relative  flex justify-center gap-5">
+        <div className="flex justify-center gap-20 py-4 px-14 my-4 rounded-full sticky top-0 bg-[#211f2a]">
           {rawLinks
             ? JSON.parse(rawLinks).map(
                 (data: { name: string }, index: number) => (

@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { dataUserIdService } from "../Api/DataByUserId/DataUserIdService";
-import useGetUser from "./useGetUser";
+import useGetUser from "../Features/Portfolio/Hooks/useGetUser";
 
 interface NavbarLinkItem {
   id: number;

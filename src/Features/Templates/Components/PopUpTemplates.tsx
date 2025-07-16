@@ -3,9 +3,11 @@ import PopUpCard from "../../../Components/PopUpCard";
 import { useOpenPopUpTemplateContext } from "../Context/useOpenPopUpTemplate";
 import cn from "../../../libs/cn";
 import { Link } from "react-router";
+import useCreateUser from "../../Home/Hooks/useCreateUser";
 
 const PopUpTemplates = () => {
   const { isOpen, triggerOpenPopUp } = useOpenPopUpTemplateContext();
+  const { handleCreteUser } = useCreateUser();
   return (
     <div
       className={cn(
@@ -48,7 +50,9 @@ const PopUpTemplates = () => {
                 to={"/template"}
                 className="bg-gradient-to-l flex justify-center  py-2 rounded-xl cursor-pointer from-purple-600 hover:from-purple-800 to-blue-600 hover:to-blue-800 transition-all duration-300"
               >
-                <button className="cursor-pointer">Use Template</button>
+                <button onClick={handleCreteUser} className="cursor-pointer">
+                  Use Template
+                </button>
               </Link>
             </div>
           </div>

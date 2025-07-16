@@ -24,6 +24,23 @@ class DataUserIdService {
       return thunkApi.rejectWithValue(err);
     }
   }
+
+  async EditImageUser(
+    data?: { userId: number; imageName: string },
+    thunkApi?: any
+  ) {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/edit-image/${data?.userId}`,
+        {
+          imageName: data?.imageName,
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
 }
 
 export const dataUserIdService = new DataUserIdService();

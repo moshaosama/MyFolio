@@ -1,8 +1,10 @@
+import Hero from "../../Features/Portfolio/Components/Hero";
+// 211f2a
 const Template = () => {
   return (
     <>
-      <div className="h-[83.1vh] bg-[#2f3237]">
-        <h1>sdas</h1>
+      <div className="h-[83.1vh] bg-[#0f0d14]">
+        <Hero />
       </div>
     </>
   );

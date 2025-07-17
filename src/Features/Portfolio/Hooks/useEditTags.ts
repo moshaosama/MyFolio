@@ -1,36 +1,39 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
-import { userService } from "../../../Api/User/UserService";
 import useGetUser from "./useGetUser";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 
 const useEditTags = () => {
   const { User } = useGetUser();
-  const { data: DataUser } = useQuery({
-    queryKey: ["getUserByid"],
-    queryFn: () => userService.GetData(User?.id),
-  });
   const { register, handleSubmit, getValues } = useForm({
     defaultValues: {
-      Tags: ["Front End Developer"],
+      Tags:
+        User?.Tags != null
+          ? JSON.parse(User.Tags)
+          : ["Front End Developer", "Back End Developer"],
     },
   });
 
   const { mutateAsync: handleEditTagsMutate } = useMutation({
     mutationKey: ["editTags"],
     mutationFn: dataUserIdService.EditTags,
+    onSuccess: async (data) => {
+      const user = data?.user[0];
+      user.Tags = JSON.parse(user.Tags);
+      await window.localStorage.setItem("User", JSON.stringify(user));
+    },
   });
 
   const handleEditTags = async (data: any) => {
-    handleEditTagsMutate({
-      Tags: data,
+    const tagsArray =
+      typeof data?.Tags === "string"
+        ? data.Tags.split(",").map((tag: string) => tag.trim())
+        : data.Tags;
+
+    await handleEditTagsMutate({
+      Tags: JSON.stringify(tagsArray),
       userId: User?.id,
     });
-    await window.localStorage.setItem(
-      "User",
-      JSON.stringify(DataUser?.user[0])
-    );
   };
 
   let tagsValue = getValues("Tags");

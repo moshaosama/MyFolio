@@ -7,7 +7,7 @@ const About = () => {
   ]);
   return (
     <>
-      <div className="text-white p-2 font-bold text-lg bg-black w-60 rounded-xl">
+      <div className="text-white p-2 font-bold text-lg bg-black w-60 rounded-xl ">
         <h1>✨ {startText}</h1>
       </div>
     </>

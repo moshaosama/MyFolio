@@ -12,7 +12,7 @@ class NavbarService extends ParentService {
       return thunkApi.rejectWithValue(err);
     }
   }
-  GetData(_?: any, thunkApi?: any): void {}
+  GetData(_?: any): void {}
 }
 
 export const navbarService = new NavbarService();

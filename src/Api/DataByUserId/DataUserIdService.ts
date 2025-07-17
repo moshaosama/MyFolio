@@ -55,6 +55,20 @@ class DataUserIdService {
       return thunkApi.rejectWithValue(err);
     }
   }
+
+  async EditName(data?: { Name: string; userId: number }, thunkApi?: any) {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/edit-name/${data.userId}`,
+        {
+          Name: data?.Name,
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
 }
 
 export const dataUserIdService = new DataUserIdService();

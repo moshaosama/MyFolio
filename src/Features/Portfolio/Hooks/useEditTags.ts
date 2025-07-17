@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
 import useGetUser from "./useGetUser";
 import { useForm } from "react-hook-form";
+import { userService } from "../../../Api/User/UserService";
 
 const useEditTags = () => {
   const { User } = useGetUser();
@@ -9,18 +10,26 @@ const useEditTags = () => {
     defaultValues: {
       Tags:
         User?.Tags != null
-          ? JSON.parse(User.Tags)
-          : ["Front End Developer", "Back End Developer"],
+          ? JSON.parse(JSON.parse(User?.Tags))
+          : ["Front-End Developer"],
     },
+  });
+
+  const { data: GetUser, refetch } = useQuery({
+    queryKey: ["getUser"],
+    queryFn: () => userService.GetData(User?.id),
+    enabled: !!User?.id,
   });
 
   const { mutateAsync: handleEditTagsMutate } = useMutation({
     mutationKey: ["editTags"],
     mutationFn: dataUserIdService.EditTags,
-    onSuccess: async (data) => {
-      const user = data?.user[0];
-      user.Tags = JSON.parse(user.Tags);
-      await window.localStorage.setItem("User", JSON.stringify(user));
+    onSuccess: async () => {
+      await window.localStorage.setItem(
+        "User",
+        JSON.stringify(GetUser?.user?.[0])
+      );
+      refetch();
     },
   });
 

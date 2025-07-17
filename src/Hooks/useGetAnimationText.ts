@@ -12,12 +12,13 @@ const useGetAnimationText = (texts: string[]) => {
         setStartText(Texts[textIndex].slice(0, currentIndex));
         currentIndex++;
       } else {
+        setTextIndex((prev) => (prev + 1) % texts.length);
         currentIndex = 1;
       }
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [textIndex]);
 
   return { startText };
 };

@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRef, useState } from "react";
 import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
 import useGetUser from "./useGetUser";
+import { userService } from "../../../Api/User/UserService";
 
 const useEditImage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -14,22 +15,29 @@ const useEditImage = () => {
     }
   };
 
-  const { mutate } = useMutation({
+  const { mutateAsync } = useMutation({
     mutationKey: ["editImage"],
     mutationFn: dataUserIdService.EditImageUser,
   });
 
-  const handleFileChange = (event: any) => {
+  const { data } = useQuery({
+    queryKey: ["getUserByid"],
+    queryFn: () => userService.GetData(User.id),
+  });
+
+  const handleFileChange = async (event: any) => {
     const file = event.target.files[0];
 
     if (file) {
       const tempUrl = URL.createObjectURL(file);
       setImageUrl(tempUrl);
 
-      mutate({
+      mutateAsync({
         userId: User?.id,
         imageName: tempUrl,
       });
+
+      await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
     }
   };
 

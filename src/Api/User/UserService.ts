@@ -10,7 +10,14 @@ class UserService extends ParentService {
       return thunkApi.rejectWithValue(err);
     }
   }
-  GetData(_: any, thunkApi: any): void {}
+  async GetData(userId?: number, thunkApi?: any) {
+    try {
+      const response = await axios.get(`${this.url}get-user/${userId}`);
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
 }
 
 export const userService = new UserService();

@@ -6,7 +6,7 @@ const SplitLayoutLoader = WithLoader(SplitLayoutTemplate);
 
 export const TemplatePages = {
   path: "template",
-  element: <SplitLayoutLoader />,
+  element: <SplitLayoutTemplate />,
   children: [
     {
       index: true,

@@ -45,7 +45,7 @@ class DataUserIdService {
   async EditTags(data?: { Tags: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-tags/${data.userId}`,
+        `http://localhost:3000/edit-tags/${data?.userId}`,
         {
           Tags: data?.Tags,
         }
@@ -59,9 +59,23 @@ class DataUserIdService {
   async EditName(data?: { Name: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-name/${data.userId}`,
+        `http://localhost:3000/edit-name/${data?.userId}`,
         {
           Name: data?.Name,
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+
+  async EditBio(data?: { Bio: string; userId: number }, thunkApi?: any) {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/edit-bio/${data?.userId}`,
+        {
+          Bio: data?.Bio,
         }
       );
       return response.data;

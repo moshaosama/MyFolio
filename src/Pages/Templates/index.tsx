@@ -1,10 +1,12 @@
 import Hero from "../../Features/Portfolio/Components/Hero";
-// 211f2a
+import EditTagsModelProvider from "../../Features/Portfolio/Context/EditTagsModelContext";
 const Template = () => {
   return (
     <>
       <div className="h-[83.1vh] bg-[#0f0d14]">
-        <Hero />
+        <EditTagsModelProvider>
+          <Hero />
+        </EditTagsModelProvider>
       </div>
     </>
   );

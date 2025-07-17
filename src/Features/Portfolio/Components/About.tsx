@@ -5,12 +5,11 @@ import PopUpEditTags from "./PopUpEditTags";
 import { useOpenEditTagsContext } from "../Context/EditTagsModelContext";
 
 const About = () => {
-  const { startText } = useGetAnimationText([
-    "Front-end Developer",
-    "Back-end Developer",
-    "Full Stack Developer",
-  ]);
   const { User } = useGetUser();
+  console.log(JSON.parse(User?.Tags));
+
+  const { startText } = useGetAnimationText(JSON.parse(User?.Tags));
+
   const { isOpenEditTags, TriggerOpenEditTags } = useOpenEditTagsContext();
   return (
     <>

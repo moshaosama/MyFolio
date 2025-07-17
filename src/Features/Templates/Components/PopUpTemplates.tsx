@@ -35,7 +35,7 @@ const PopUpTemplates = () => {
           <div className="w-72 bg-slate-700 max-sm:w-full hover:scale-[1.02] transition-all duration-300 rounded-xl">
             <div>
               <img
-                src="https://selfolio8.netlify.app/assets/templateOnePreview-BzxumhGX.png"
+                src="/Screenshot (195).png"
                 alt="template.png"
                 className="object-cover rounded-t-xl"
               />

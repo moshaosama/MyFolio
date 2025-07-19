@@ -17,7 +17,7 @@ const Bio = () => {
       <div
         onClick={handleOpenBioModel}
         className={cn(
-          "mt-3 text-white  cursor-pointer w-[40pc] p-3",
+          "mt-3 text-white  cursor-pointer w-[40pc] max-sm:w-full p-3",
           !isOpenEditBio && "hover:border-2"
         )}
       >
@@ -25,7 +25,7 @@ const Bio = () => {
           <form onSubmit={handleSubmitBio(handleEditBio)}>
             <textarea
               defaultValue={DefaultValueBio}
-              className="w-[40pc] border-2 h-28 p-2"
+              className="w-[40pc] max-sm:w-full border-2 h-28 p-2"
               {...registerBio("Bio", { required: true })}
             />
             <p className="w-full mx-8 flex justify-end">

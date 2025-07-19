@@ -15,7 +15,10 @@ const About = () => {
 
   return (
     <>
-      <div className="relative text-white p-2 px-4 font-bold text-lg bg-black w-48 rounded-full ">
+      <div
+        id="about"
+        className="relative text-white p-2 px-4 font-bold text-lg bg-black w-48 rounded-full "
+      >
         <div
           onClick={TriggerOpenEditTags}
           className="absolute top-0 -left-1 cursor-pointer"

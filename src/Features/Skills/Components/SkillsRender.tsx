@@ -9,7 +9,7 @@ const SkillsRender = () => {
   return (
     <>
       <div className={cn(Container)}>
-        <div className="mx-28 py-10 w-[67pc] grid grid-cols-6 gap-10">
+        <div className="mx-28 max-sm:mx-0 py-10 w-[67pc] max-sm:w-full grid grid-cols-6 max-sm:grid-cols-2 gap-10">
           {Skills?.skills?.map(
             (skill: { skills: string; image: string; id: number }) => (
               <div

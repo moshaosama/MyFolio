@@ -1,7 +1,10 @@
 const ProjectsHeader = () => {
   return (
     <>
-      <div className="flex flex-col gap-2 mt-5 justify-center items-center">
+      <div
+        id="projects"
+        className="flex flex-col gap-2 mt-5 justify-center items-center"
+      >
         <h1
           className="bg-gradient-to-l from-blue-600  to-purple-600 to-80% bg-clip-text text-transparent text-6xl font-bold"
           style={{ textShadow: "6px 10px 90px #155dfc" }}

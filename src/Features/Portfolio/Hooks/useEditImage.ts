@@ -20,10 +20,9 @@ const useEditImage = () => {
     mutationFn: dataUserIdService.EditImageUser,
   });
 
-  const { data, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: ["getUserByid"],
     queryFn: () => userService.GetData(User.id),
-    enabled: false, // مننفذهاش تلقائيًا
   });
 
   const handleFileChange = async (event: any) => {
@@ -33,16 +32,12 @@ const useEditImage = () => {
       const tempUrl = URL.createObjectURL(file);
       setImageUrl(tempUrl);
 
-      await mutateAsync({
+      mutateAsync({
         userId: User?.id,
         imageName: tempUrl,
       });
 
-      const updated = await refetch();
-      await window.localStorage.setItem(
-        "User",
-        JSON.stringify(updated?.data?.user[0])
-      );
+      await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
     }
   };
 

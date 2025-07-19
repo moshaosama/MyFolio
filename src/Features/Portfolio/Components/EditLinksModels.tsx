@@ -1,8 +1,10 @@
 import EditLinkModel from "../../../Components/EditLinkModel";
 import { useOpenEditTagsContext } from "../Context/EditTagsModelContext";
 import useEditLinks from "../Hooks/useEditLinks";
+import useGetUser from "../Hooks/useGetUser";
 
 const EditLinksModels = () => {
+  const { User } = useGetUser();
   const {
     isOpenEditResume,
     TriggerOpenEditResume,
@@ -23,7 +25,7 @@ const EditLinksModels = () => {
           onCLick={TriggerOpenEditResume}
           Title="Edit Resume Button"
           Label="Resume URL"
-          DefaultValue=""
+          DefaultValue={User?.ResumeLink}
           onSubmit={handleSubmit(handleEditLinks)}
           registerName="ResumeLink"
           register={register}
@@ -35,7 +37,7 @@ const EditLinksModels = () => {
           onCLick={TriggerOpenEditGithub}
           Title="Edit Link"
           Label="URL"
-          DefaultValue=""
+          DefaultValue={User?.GithubLink}
           onSubmit={handleSubmit(handleEditLinks)}
           registerName="GithubLink"
           register={register}
@@ -47,7 +49,7 @@ const EditLinksModels = () => {
           onCLick={TriggerOpenEditLinkedin}
           Title="Edit Link"
           Label="URL"
-          DefaultValue=""
+          DefaultValue={User?.LinkedinLink}
           onSubmit={handleSubmit(handleEditLinks)}
           register={register}
           registerName="LinkedinLink"
@@ -59,7 +61,7 @@ const EditLinksModels = () => {
           onCLick={TriggerOpenEditTwitter}
           Title="Edit Link"
           Label="URL"
-          DefaultValue=""
+          DefaultValue={User?.TwitterLink}
           onSubmit={handleSubmit(handleEditLinks)}
           register={register}
           registerName="TwitterLink"
@@ -71,7 +73,7 @@ const EditLinksModels = () => {
           onCLick={TriggerOpenEditMedium}
           Title="Edit Link"
           Label="URL"
-          DefaultValue=""
+          DefaultValue={User?.MediumLink}
           onSubmit={handleSubmit(handleEditLinks)}
           register={register}
           registerName="MediumLink"

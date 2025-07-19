@@ -7,7 +7,7 @@ const NavbarTemplate = () => {
 
   return (
     <>
-      <div className="bg-[#0f0d14] w-full relative  flex justify-center gap-5">
+      <div className="bg-[#0f0d14] max-sm:hidden w-full relative  flex justify-center gap-5">
         <div className="flex justify-center gap-20 py-4 px-14 my-4 rounded-full sticky top-0 bg-[#211f2a]">
           {rawLinks
             ? JSON.parse(rawLinks).map(

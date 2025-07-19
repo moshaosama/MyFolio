@@ -6,6 +6,7 @@ const useGetAnimationText = (texts: string[]) => {
   const [textIndex, setTextIndex] = useState(0);
 
   useEffect(() => {
+    if (!Texts || Texts.length === 0) return;
     let currentIndex = 1;
     const interval = setInterval(async () => {
       if (currentIndex <= Texts[textIndex].length) {

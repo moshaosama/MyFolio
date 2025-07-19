@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export type FieldValue =
+  | "ResumeLink"
+  | "LinkedinLink"
+  | "GitHubLink"
+  | "TwitterLink"
+  | "MediumLink";
+
 class DataUserIdService {
   async getLinks(userId?: any, thunkApi?: any) {
     try {
@@ -76,6 +83,23 @@ class DataUserIdService {
         `http://localhost:3000/edit-bio/${data?.userId}`,
         {
           Bio: data?.Bio,
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+
+  async EditLinks(
+    data?: { value: any; userId: number; Field: any },
+    thunkApi?: any
+  ) {
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/edit-links/${data?.userId}`,
+        {
+          [data?.Field!]: data?.value,
         }
       );
       return response.data;

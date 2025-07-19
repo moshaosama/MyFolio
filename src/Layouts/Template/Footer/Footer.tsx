@@ -5,7 +5,7 @@ const Footer = () => {
         <h1 className="text-3xl font-bold">
           Looking Forward to Hearing from You!
         </h1>
-        <p className="text-gray-500 w-[37pc] text-center">
+        <p className="text-gray-500 w-[37pc] max-sm:w-full text-center">
           Whether you have a project in mind, a job opportunity, or just want to
           say hello, don't hesitate to reach out. I typically respond within 24
           hours.

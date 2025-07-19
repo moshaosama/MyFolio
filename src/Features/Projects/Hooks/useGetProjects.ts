@@ -4,13 +4,13 @@ import { projectService } from "../../../Api/Projects/ProjectService";
 
 const useGetProjects = () => {
   const { User } = useGetUser();
-  const { data: Projects } = useQuery({
+  const { data: Projects, refetch } = useQuery({
     queryKey: ["getProject", User?.id],
     queryFn: () => projectService.GetData(User?.id),
     enabled: !!User?.id,
   });
 
-  return { Projects };
+  return { Projects, refetch };
 };
 
 export default useGetProjects;

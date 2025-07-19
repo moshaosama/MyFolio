@@ -1,7 +1,6 @@
 import { CiShare1 } from "react-icons/ci";
 import { FaGithub, FaLinkedin, FaTwitter, FaMedium } from "react-icons/fa";
 import { useOpenEditTagsContext } from "../Features/Portfolio/Context/EditTagsModelContext";
-import { Link } from "react-router";
 import useGetUser from "../Features/Portfolio/Hooks/useGetUser";
 
 const LinksIcons = () => {

@@ -10,13 +10,20 @@ import useCreateProject from "../Hooks/useCreateProject";
 import useDeleteProject from "../Hooks/useDeleteProject";
 import useEditPeoject from "../Hooks/useEditPeoject";
 import { GoX } from "react-icons/go";
+import { Link } from "react-router";
 
 const ProjectsCards = () => {
   const { Projects } = useGetProjects();
   const { handleCreateNewProject } = useCreateProject();
   const { handleDeleteProject } = useDeleteProject();
-  const { isOpenEdit, handleTriggerOpenEdit, handleCloseOpenEdit } =
-    useEditPeoject();
+  const {
+    isOpenEdit,
+    handleTriggerOpenEdit,
+    handleCloseOpenEdit,
+    register,
+    handleEditProject,
+    handleSubmit,
+  } = useEditPeoject();
 
   return (
     <>
@@ -25,7 +32,7 @@ const ProjectsCards = () => {
           {Projects?.projects?.map((projects: any, index: number) => (
             <div
               key={index}
-              className="border-2 p-7 hover:-translate-y-5  transition-all duration-500 group border-green-500 rounded-xl"
+              className="border-2 p-7 hover:-translate-y-5   transition-all duration-500 group border-green-500 rounded-xl"
             >
               <div>
                 <div className="bg-white relative flex justify-center items-center w-full h-40 rounded-xl">
@@ -35,7 +42,7 @@ const ProjectsCards = () => {
                     <h1>600</h1>
                   </div>
                   <div className="flex items-center absolute -top-4 gap-3 -right-3">
-                    {isOpenEdit ? (
+                    {isOpenEdit === projects.id ? (
                       <>
                         <GoX
                           className="p-2 bg-red-600 rounded-full hover:bg-red-700 transition-all duration-300 cursor-pointer"
@@ -47,7 +54,7 @@ const ProjectsCards = () => {
                           className="p-2 bg-green-600 rounded-full hover:bg-green-700 transition-all duration-300 cursor-pointer"
                           size={35}
                           color="white"
-                          onClick={handleTriggerOpenEdit}
+                          onClick={handleSubmit(handleEditProject)}
                         />
                       </>
                     ) : (
@@ -62,7 +69,7 @@ const ProjectsCards = () => {
                           className="p-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-all duration-300 cursor-pointer"
                           size={35}
                           color="white"
-                          onClick={handleTriggerOpenEdit}
+                          onClick={() => handleTriggerOpenEdit(projects.id)}
                         />
                       </>
                     )}
@@ -71,13 +78,14 @@ const ProjectsCards = () => {
               </div>
 
               <div className="flex flex-col gap-4">
-                {isOpenEdit ? (
+                {isOpenEdit === projects.id ? (
                   <input
                     type="text"
-                    defaultValue="CategYou - YouTube Play"
+                    defaultValue={projects.title}
                     className="text-white text-2xl font-bold w-full 
                              focus:outline-0 border-b-2 border-b-gray-500 
                              overflow-hidden text-ellipsis whitespace-nowrap"
+                    {...register("title", { required: true })}
                   />
                 ) : (
                   <h1 className="text-white text-2xl font-bold mt-4">
@@ -85,10 +93,11 @@ const ProjectsCards = () => {
                   </h1>
                 )}
 
-                {isOpenEdit ? (
+                {isOpenEdit === projects.id ? (
                   <textarea
                     className="text-gray-500 font-semibold text-lg w-full border-2 border-gray-500 h-48"
-                    defaultValue="Transform your YouTube experience with nested folders, smart sorting, and intuitive drag-and-drop organization for your Liked Videos playlist."
+                    defaultValue={projects.description}
+                    {...register("description", { required: true })}
                   />
                 ) : (
                   <p className="text-gray-500 font-semibold text-lg">
@@ -98,7 +107,7 @@ const ProjectsCards = () => {
 
                 {/* Skills */}
 
-                {isOpenEdit ? (
+                {isOpenEdit === projects.id ? (
                   <>
                     <div className="grid grid-cols-3 gap-5">
                       {JSON.parse(projects?.skills)?.map(
@@ -106,7 +115,9 @@ const ProjectsCards = () => {
                           <div className="bg-slate-900 text-center rounded-full  flex items-center justify-center">
                             <h1 className="bg-gradient-to-l flex gap-3 items-center from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
                               {skill?.name}{" "}
-                              {isOpenEdit && <MdDelete color="red" />}
+                              {isOpenEdit === projects.id && (
+                                <MdDelete color="red" />
+                              )}
                             </h1>
                           </div>
                         )
@@ -116,7 +127,9 @@ const ProjectsCards = () => {
                       <input
                         type="text"
                         placeholder="Tag name"
+                        defaultValue={projects?.skills}
                         className="bg-slate-800 p-2 w-full text-white rounded-lg"
+                        {...register("skills")}
                       />
                       <button className="bg-blue-600 cursor-pointer hover:bg-blue-700 transition-all duration-200 p-2 rounded-xl text-white font-semibold ">
                         Add
@@ -138,29 +151,47 @@ const ProjectsCards = () => {
                   </div>
                 )}
 
-                {isOpenEdit ? (
+                {isOpenEdit === projects.id ? (
                   <div className="flex flex-col gap-2">
-                    <input
-                      type="text"
-                      defaultValue="https://my-folio-iota-eight.vercel.app/"
-                      className="bg-slate-800 p-2 w-full text-white rounded-lg"
-                    />
-                    <input
-                      type="text"
-                      defaultValue="https://github.com/moshaosama/MyFolio"
-                      className="bg-slate-800 p-2 w-full text-white rounded-lg"
-                    />
+                    <p>
+                      <label className="text-gray-500">Github</label>
+                      <input
+                        type="text"
+                        defaultValue={projects.githubLink}
+                        className="bg-slate-800 p-2 w-full text-white rounded-lg"
+                        {...register("githubLink", { required: true })}
+                      />
+                    </p>
+                    <p>
+                      <label className="text-gray-500">Live Demo</label>
+                      <input
+                        type="text"
+                        defaultValue={projects.liveDemoLink}
+                        className="bg-slate-800 p-2 w-full text-white rounded-lg"
+                        {...register("liveDemoLink", { required: true })}
+                      />
+                    </p>
                   </div>
                 ) : (
                   <div className="flex justify-between gap-4">
-                    <button className="bg-gradient-to-l from-blue-600 cursor-pointer to-green-600 py-2 text-white font-bold rounded-xl w-1/2 flex items-center justify-center gap-1">
-                      <MdLiveTv />
-                      Live Demo
+                    <button className="bg-gradient-to-l from-blue-600 cursor-pointer to-green-600 py-2 text-white font-bold rounded-xl w-1/2">
+                      <Link
+                        to={projects.liveDemoLink}
+                        className="flex items-center justify-center gap-1"
+                      >
+                        <MdLiveTv />
+                        Live Demo
+                      </Link>
                     </button>
 
-                    <button className="bg-gradient-to-l to-slate-800 cursor-pointer  from-gray-600 from-40% py-2 text-white font-bold rounded-xl w-1/2 flex items-center justify-center gap-1">
-                      <FaGithub />
-                      Github
+                    <button className="bg-gradient-to-l to-slate-800 cursor-pointer  from-gray-600 from-40% py-2 text-white font-bold rounded-xl w-1/2">
+                      <Link
+                        to={projects.githubLink}
+                        className="flex items-center justify-center gap-1"
+                      >
+                        <FaGithub />
+                        Github
+                      </Link>
                     </button>
                   </div>
                 )}

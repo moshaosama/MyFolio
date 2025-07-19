@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
 import { useForm } from "react-hook-form";
 import useGetUser from "./useGetUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useEditBio = () => {
   const { User } = useGetUser();
@@ -10,12 +10,21 @@ const useEditBio = () => {
     register: registerBio,
     handleSubmit: handleSubmitBio,
     getValues,
+    reset,
   } = useForm({
     defaultValues: {
-      Bio: User?.Bio,
+      Bio: "",
     },
   });
+
+  useEffect(() => {
+    if (User?.Bio) {
+      reset({ Bio: User.Bio });
+    }
+  }, [User]);
+
   const [isOpenEditBio, setIsOpenEditBio] = useState(false);
+
   const { mutate: handleEditBioMutate } = useMutation({
     mutationKey: ["EditBio"],
     mutationFn: dataUserIdService.EditBio,
@@ -24,6 +33,7 @@ const useEditBio = () => {
       await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
     },
   });
+
   const handleOpenBioModel = () => {
     setIsOpenEditBio(true);
   };

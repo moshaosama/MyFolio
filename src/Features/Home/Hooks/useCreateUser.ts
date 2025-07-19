@@ -13,7 +13,7 @@ const useCreateUser = () => {
 
   const { mutateAsync: CreateLinksByUser } = useMutation({
     mutationKey: ["createLink"],
-    mutationFn: navbarService.CreateData,
+    mutationFn: (user_id) => navbarService.CreateData(user_id),
     onSuccess: () => {
       console.log("Success Created!");
     },

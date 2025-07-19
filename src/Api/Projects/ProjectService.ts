@@ -14,7 +14,7 @@ class ProjectService extends ParentService {
   async CreateData(user_id?: any, thunkApi?: any) {
     try {
       const response = await axios.post(
-        `https://myfolioserver-production.up.railway.app//create-projects/${user_id}`
+        `https://myfolioserver-production.up.railway.app/create-projects/${user_id}`
       );
 
       return response.data;
@@ -25,7 +25,7 @@ class ProjectService extends ParentService {
   async GetData(user_id?: any, thunkApi?: any) {
     try {
       const response = await axios.get(
-        `https://myfolioserver-production.up.railway.app//get-projects/${user_id}`
+        `https://myfolioserver-production.up.railway.app/get-projects/${user_id}`
       );
 
       return response.data;
@@ -37,7 +37,7 @@ class ProjectService extends ParentService {
   async DeleteProject(project_id?: number, thunkApi?: any) {
     try {
       const response = await axios.delete(
-        `https://myfolioserver-production.up.railway.app//delete-project/${project_id}`
+        `https://myfolioserver-production.up.railway.app/delete-project/${project_id}`
       );
 
       return response.data;
@@ -49,7 +49,7 @@ class ProjectService extends ParentService {
   async EditProject(data?: DataEdit, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `https://myfolioserver-production.up.railway.app//edit-project/${data?.project_id}`,
+        `https://myfolioserver-production.up.railway.app/edit-project/${data?.project_id}`,
         {
           title: data?.title,
           description: data?.description,

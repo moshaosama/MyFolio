@@ -28,11 +28,11 @@ const ProjectsCards = () => {
   return (
     <>
       <div className={cn(Container)}>
-        <div className="mx-28 py-10 w-[67pc] grid grid-cols-3 gap-10">
+        <div className="mx-28 max-sm:mx-0 py-10 w-[67pc] max-sm:w-full grid grid-cols-3 max-sm:grid-cols-1 gap-10">
           {Projects?.projects?.map((projects: any, index: number) => (
             <div
               key={index}
-              className="border-2 p-7 hover:-translate-y-5   transition-all duration-500 group border-green-500 rounded-xl"
+              className="border-2 p-7 hover:-translate-y-5  transition-all duration-500 group border-green-500 rounded-xl"
             >
               <div>
                 <div className="bg-white relative flex justify-center items-center w-full h-40 rounded-xl">

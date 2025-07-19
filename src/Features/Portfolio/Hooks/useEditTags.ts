@@ -3,9 +3,11 @@ import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
 import useGetUser from "./useGetUser";
 import { useForm } from "react-hook-form";
 import { userService } from "../../../Api/User/UserService";
+import { useOpenEditTagsContext } from "../Context/EditTagsModelContext";
 
 const useEditTags = () => {
   const { User } = useGetUser();
+  const { TriggerOpenEditTags } = useOpenEditTagsContext();
   const { register, handleSubmit, getValues } = useForm({
     defaultValues: {
       Tags:
@@ -15,7 +17,7 @@ const useEditTags = () => {
     },
   });
 
-  const { data: GetUser, refetch } = useQuery({
+  const { refetch } = useQuery({
     queryKey: ["getUser"],
     queryFn: () => userService.GetData(User?.id),
     enabled: !!User?.id,
@@ -25,11 +27,15 @@ const useEditTags = () => {
     mutationKey: ["editTags"],
     mutationFn: dataUserIdService.EditTags,
     onSuccess: async () => {
-      await window.localStorage.setItem(
-        "User",
-        JSON.stringify(GetUser?.user?.[0])
-      );
-      refetch();
+      const newUser = await refetch();
+
+      if (newUser?.data?.user?.[0]) {
+        await window.localStorage.setItem(
+          "User",
+          JSON.stringify(newUser.data.user[0])
+        );
+      }
+      TriggerOpenEditTags();
     },
   });
 

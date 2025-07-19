@@ -20,6 +20,7 @@ const useEditBio = () => {
     mutationKey: ["EditBio"],
     mutationFn: dataUserIdService.EditBio,
     onSuccess: async (data) => {
+      setIsOpenEditBio(false);
       await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
     },
   });

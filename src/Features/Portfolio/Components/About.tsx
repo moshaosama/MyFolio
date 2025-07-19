@@ -12,7 +12,6 @@ const About = () => {
   const { startText } = useGetAnimationText(JSON.parse(JSON.parse(User?.Tags)));
   const { isOpenEditTags, TriggerOpenEditTags } = useOpenEditTagsContext();
   const { register, handlEditName, handleSubmit } = useEditname();
-
   return (
     <>
       <div
@@ -44,6 +43,10 @@ const About = () => {
             <CiShare1 color="white" size={30} />
           </div>
         </div>
+      </div>
+
+      <div className="bg-green-500 h-2 relative w-[20%] overflow-hidden mt-5 rounded-full">
+        <div className="bg-blue-500 absolute top-0 left-0 h-2 animate-expand rounded-full"></div>
       </div>
       <Bio />
       <Links />

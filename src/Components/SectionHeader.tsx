@@ -37,7 +37,7 @@ const SectionHeader = ({
         </div>
       )}
 
-      <p className="text-xl font-semibold text-center text-gray-500 w-[55pc]">
+      <p className="text-xl font-semibold text-center text-gray-500 w-[55pc] max-sm:w-full">
         {Description}
       </p>
     </div>

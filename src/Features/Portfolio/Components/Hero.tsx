@@ -12,7 +12,7 @@ const Hero = () => {
   const { User } = useGetUser();
   return (
     <div className={cn(Container)}>
-      <div className="py-24 mx-28 relative flex gap-28">
+      <div className="py-24 mx-28 max-sm:mx-0 relative flex max-sm:flex-col gap-28">
         <div>
           {User?.Image === null ? (
             <div className="bg-[#bbb] group hover:shadow-lg hover:shadow-blue-300 transition-all duration-300  w-80 rounded-xl">

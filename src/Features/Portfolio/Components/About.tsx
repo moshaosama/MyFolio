@@ -9,7 +9,18 @@ import Links from "./Links";
 
 const About = () => {
   const { User } = useGetUser();
-  const { startText } = useGetAnimationText(JSON.parse(JSON.parse(User?.Tags)));
+
+  let parsedTags: string[] = [];
+
+  try {
+    if (User?.Tags) {
+      parsedTags = JSON.parse(JSON.parse(User.Tags));
+    }
+  } catch (err) {
+    console.error("Error parsing Tags", err);
+  }
+
+  const { startText } = useGetAnimationText(parsedTags);
   const { isOpenEditTags, TriggerOpenEditTags } = useOpenEditTagsContext();
   const { register, handlEditName, handleSubmit } = useEditname();
   return (

@@ -4,7 +4,6 @@ import useGetSkill from "../Hooks/useGetSkill";
 
 const SkillsRender = () => {
   const { Skills } = useGetSkill();
-  console.log(Skills?.skills);
 
   return (
     <>

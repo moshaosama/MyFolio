@@ -4,13 +4,13 @@ import { skillService } from "../../../Api/Skills/skillService";
 
 const useGetSkill = () => {
   const { User } = useGetUser();
-  const { data: Skills } = useQuery({
+  const { data: Skills, refetch } = useQuery({
     queryKey: ["getSkills", [User?.id]],
     queryFn: () => skillService.GetData(User?.id),
     enabled: !!User?.id,
   });
 
-  return { Skills };
+  return { Skills, refetch };
 };
 
 export default useGetSkill;

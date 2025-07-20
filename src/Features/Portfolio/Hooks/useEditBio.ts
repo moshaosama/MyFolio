@@ -21,7 +21,7 @@ const useEditBio = () => {
     if (User?.Bio) {
       reset({ Bio: User.Bio });
     }
-  }, [User]);
+  }, []);
 
   const [isOpenEditBio, setIsOpenEditBio] = useState(false);
 

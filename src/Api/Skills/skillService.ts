@@ -6,7 +6,7 @@ class SkillService extends ParentService {
   async GetData(user_id?: number, thunkApi?: any) {
     try {
       const response = await axios.get(
-        `http://localhost:3000/get-skills/${user_id}`
+        `https://myfolioserver-production.up.railway.app/get-skills/${user_id}`
       );
       return response.data;
     } catch (err) {

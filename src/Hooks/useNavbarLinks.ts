@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { dataUserIdService } from "../Api/DataByUserId/DataUserIdService";
 import useGetUser from "../Features/Portfolio/Hooks/useGetUser";
+import { useEffect, useState } from "react";
 
 interface NavbarLinkItem {
   id: number;
@@ -15,6 +16,13 @@ interface NavbarLinksResponse {
 
 const useNavbarLinks = () => {
   const { User } = useGetUser();
+  const [isFound, setIsFound] = useState({
+    About: false,
+    Projects: false,
+    Skills: false,
+    Experience: false,
+    Contact: false,
+  });
 
   const { data: NavbarLinks, refetch } = useQuery<NavbarLinksResponse>({
     queryKey: ["databyUser"],
@@ -34,7 +42,27 @@ const useNavbarLinks = () => {
     mutate({ linkName, userId: User?.id });
   };
 
-  return { NavbarLinks, handleDeleteLink };
+  const rawLinks = NavbarLinks?.result?.[0]?.Links;
+
+  useEffect(() => {
+    if (!rawLinks) return;
+
+    try {
+      const links = JSON.parse(rawLinks);
+      const updatedFound = {
+        About: links.some((el: any) => el.name === "About"),
+        Projects: links.some((el: any) => el.name === "Projects"),
+        Skills: links.some((el: any) => el.name === "Skills"),
+        Experience: links.some((el: any) => el.name === "Experience"),
+        Contact: links.some((el: any) => el.name === "Contact"),
+      };
+      setIsFound(updatedFound);
+    } catch (err) {
+      console.error("JSON parse error:", err);
+    }
+  }, [rawLinks]);
+
+  return { NavbarLinks, handleDeleteLink, isFound };
 };
 
 export default useNavbarLinks;

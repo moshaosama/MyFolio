@@ -1,6 +1,7 @@
 import ContactHeader from "../../Features/Contact/Components/ContactHeader";
 import ContactRenders from "../../Features/Contact/Components/ContactRenders";
 import ExperienceHeader from "../../Features/Experience/Components/ExperienceHeader";
+import ExperienceRender from "../../Features/Experience/Components/ExperienceRender";
 import Hero from "../../Features/Portfolio/Components/Hero";
 import EditTagsModelProvider from "../../Features/Portfolio/Context/EditTagsModelContext";
 import ProjectsCards from "../../Features/Projects/Components/ProjectsCards";
@@ -30,7 +31,12 @@ const Template = () => {
                 <SkillsRender />
               </>
             )}
-            {isFound.Experience && <ExperienceHeader />}
+            {isFound.Experience && (
+              <>
+                <ExperienceHeader />
+                <ExperienceRender />
+              </>
+            )}
             {isFound.Contact && (
               <>
                 <ContactHeader />

@@ -12,9 +12,17 @@ const About = () => {
 
   let parsedTags: string[] = [];
 
+  // try {
+  //   if (User?.Tags) {
+  //     parsedTags = JSON.parse(JSON.parse(User.Tags));
+  //   }
+  // } catch (err) {
+  //   console.error("Error parsing Tags", err);
+  // }
+
   try {
     if (User?.Tags) {
-      parsedTags = JSON.parse(JSON.parse(User.Tags));
+      parsedTags = JSON.parse(User.Tags);
     }
   } catch (err) {
     console.error("Error parsing Tags", err);

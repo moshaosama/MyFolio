@@ -7,8 +7,7 @@ import useGetUser from "../Hooks/useGetUser";
 import About from "./About";
 
 const Hero = () => {
-  const { handleClick, handleFileChange, imageURL, fileInputRef } =
-    useEditImage();
+  const { handleClick, handleFileChange, fileInputRef } = useEditImage();
   const { User } = useGetUser();
   return (
     <div className={cn(Container)}>
@@ -43,13 +42,25 @@ const Hero = () => {
             </div>
           ) : (
             <div className="overflow-hidden relative">
-              <div className="w-10 h-10 border-t-[7px] border-l-[7px] border-l-blue-300 border-t-blue-500 rounded-tl-xl absolute top-16 -left-7 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
               <img
-                src={User?.Image || imageURL}
+                src={`https://myfolioserver-production.up.railway.app/uploads/${User?.Image}`}
                 alt="ProfileImage.png"
-                className="w-80 h-[30pc] hover:scale-105 transition-all duration-300 hover:rounded-2xl object-cover rounded-xl"
+                className="w-96 h-[30pc] hover:scale-105 transition-all duration-300 hover:rounded-2xl object-cover rounded-xl"
               />
-              <div className="w-10 h-10 border-b-[7px] border-r-[7px] border-r-green-300 border-b-green-500 rounded-br-xl absolute bottom-16 left-[19pc] transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
+
+              <div className="p-4 absolute top-0 right-0">
+                <CiShare1
+                  size={30}
+                  className="cursor-pointer z-50 text-blue-500"
+                  onClick={handleClick}
+                />
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </div>
             </div>
           )}
         </div>

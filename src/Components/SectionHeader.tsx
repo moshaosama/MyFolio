@@ -27,7 +27,7 @@ const SectionHeader = ({
       )}
     >
       <h1
-        className="bg-gradient-to-l from-blue-600  to-purple-600 to-80% bg-clip-text text-transparent text-6xl font-bold"
+        className="bg-gradient-to-l from-blue-600  to-purple-600 to-80% bg-clip-text text-transparent text-6xl max-sm:text-5xl font-bold"
         style={{ textShadow: "6px 10px 90px #155dfc" }}
       >
         {Title}

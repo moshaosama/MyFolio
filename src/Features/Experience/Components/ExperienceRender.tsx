@@ -21,7 +21,7 @@ const ExperienceRender = () => {
 
   return (
     <>
-      <div className="flex justify-center mt-10 z-40">
+      <div className="flex justify-center mt-10 ">
         <div className="relative  flex flex-col items-center w-full max-w-5xl">
           <div className="absolute w-1  bg-white max-sm:hidden h-full left-1/2  -translate-x-1/2 z-10" />
 
@@ -37,7 +37,7 @@ const ExperienceRender = () => {
                   <>
                     <i
                       className={cn(
-                        "w-14 h-14 max-sm:hidden flex justify-center absolute  items-center bg-gray-100/30 z-50 rounded-full border-2 border-white",
+                        "w-14 h-14 z-40 max-sm:hidden flex justify-center absolute  items-center bg-gray-100/30  rounded-full border-2 border-white",
                         experience?.Position === "left" && "left-[30.2pc]"
                       )}
                     >
@@ -113,7 +113,7 @@ const ExperienceRender = () => {
                     </div>
                     <i
                       className={cn(
-                        "w-14 h-14 flex max-sm:hidden justify-center absolute  items-center bg-gray-100/30 z-50 rounded-full border-2 border-white",
+                        "w-14  h-14 flex max-sm:hidden justify-center absolute  items-center bg-gray-100/30 z-40 rounded-full border-2 border-white",
                         experience?.Position === "right" && "right-[30.2pc]"
                       )}
                     >
@@ -134,7 +134,7 @@ const ExperienceRender = () => {
           ))}
           {/* margin: 0pc 1pc;
 width: 21.6pc; */}
-          <div className="flex gap-20 ">
+          <div className="flex gap-20 z-40">
             {isOpenAddExperience ? null : (
               <div
                 onClick={handleTriggerOpenAddExperience}

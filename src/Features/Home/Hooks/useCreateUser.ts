@@ -6,8 +6,15 @@ const useCreateUser = () => {
   const { mutateAsync: CreateUser } = useMutation({
     mutationKey: ["createUser"],
     mutationFn: () => userService.CreateData(),
-    onSuccess: (data) => {
-      window.localStorage.setItem("User", JSON.stringify(data.user[0]));
+    onSuccess: async (data) => {
+      try {
+        const user = data?.user?.[0];
+        if (user) {
+          window.localStorage.setItem("User", JSON.stringify(user));
+        }
+      } catch (err) {
+        console.error("Failed to save user to localStorage", err);
+      }
     },
   });
 

@@ -48,7 +48,11 @@ const useNavbarLinks = () => {
     if (!rawLinks) return;
 
     try {
-      const links = JSON.parse(rawLinks);
+      const links =
+        typeof rawLinks === "string" ? JSON.parse(rawLinks) : rawLinks;
+
+      if (!Array.isArray(links)) return;
+
       const updatedFound = {
         About: links.some((el: any) => el.name === "About"),
         Projects: links.some((el: any) => el.name === "Projects"),
@@ -56,6 +60,7 @@ const useNavbarLinks = () => {
         Experience: links.some((el: any) => el.name === "Experience"),
         Contact: links.some((el: any) => el.name === "Contact"),
       };
+
       setIsFound(updatedFound);
     } catch (err) {
       console.error("JSON parse error:", err);

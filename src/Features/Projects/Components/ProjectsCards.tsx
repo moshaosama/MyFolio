@@ -110,21 +110,20 @@ const ProjectsCards = () => {
                 {isOpenEdit === projects.id ? (
                   <>
                     <div className="grid grid-cols-3 gap-5">
-                      {JSON.parse(projects?.skills)?.map(
-                        (skill: { name: string }, index: number) => (
-                          <div
-                            key={index}
-                            className="bg-slate-900 text-center rounded-full  flex items-center justify-center"
-                          >
-                            <h1 className="bg-gradient-to-l flex gap-3 items-center from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
-                              {skill?.name}{" "}
-                              {isOpenEdit === projects.id && (
-                                <MdDelete color="red" />
-                              )}
-                            </h1>
-                          </div>
-                        )
-                      )}
+                      {(typeof projects.skills === "string"
+                        ? JSON.parse(projects.skills)
+                        : projects.skills
+                      )?.map((skill: { name: string }, index: number) => (
+                        <div
+                          key={index}
+                          className="bg-slate-900 text-center rounded-full  flex items-center justify-center"
+                        >
+                          <h1 className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
+                            {skill?.name}{" "}
+                            {isOpenEdit && <MdDelete color="red" />}
+                          </h1>
+                        </div>
+                      ))}
                     </div>
                     <div className="flex justify-between gap-2 items-center">
                       <input
@@ -141,19 +140,19 @@ const ProjectsCards = () => {
                   </>
                 ) : (
                   <div className="grid grid-cols-3 gap-5">
-                    {JSON.parse(projects?.skills)?.map(
-                      (skill: { name: string }, index: number) => (
-                        <div
-                          key={index}
-                          className="bg-slate-900 text-center rounded-full  flex items-center justify-center"
-                        >
-                          <h1 className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
-                            {skill?.name}{" "}
-                            {isOpenEdit && <MdDelete color="red" />}
-                          </h1>
-                        </div>
-                      )
-                    )}
+                    {(typeof projects?.skills === "string"
+                      ? JSON.parse(projects.skills)
+                      : projects.skills
+                    )?.map((skill: { name: string }, index: number) => (
+                      <div
+                        key={index}
+                        className="bg-slate-900 text-center rounded-full flex items-center justify-center"
+                      >
+                        <h1 className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
+                          {skill?.name} {isOpenEdit && <MdDelete color="red" />}
+                        </h1>
+                      </div>
+                    ))}
                   </div>
                 )}
 

@@ -4,7 +4,7 @@ class ContactService {
   async getContact(userId: number, thunkApi?: any) {
     try {
       const response = await axios.get(
-        `http://localhost:3000/get-contact/${userId}`
+        `https://myfolioserver-production.up.railway.app/get-contact/${userId}`
       );
 
       return response.data;
@@ -16,7 +16,7 @@ class ContactService {
   async EditContact(data?: any, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-contact`,
+        `https://myfolioserver-production.up.railway.app/edit-contact`,
         data
       );
       return response.data;

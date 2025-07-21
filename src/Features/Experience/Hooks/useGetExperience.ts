@@ -9,6 +9,7 @@ const useGetExperience = () => {
     queryKey: ["getExperience", [User?.id]],
     queryFn: () => experienceService.GetData(User?.id),
     enabled: !!User?.id,
+    refetchOnWindowFocus: false,
   });
 
   return { Experience, refetch };

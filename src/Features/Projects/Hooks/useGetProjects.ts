@@ -8,6 +8,7 @@ const useGetProjects = () => {
     queryKey: ["getProject", User?.id],
     queryFn: () => projectService.GetData(User?.id),
     enabled: !!User?.id,
+    refetchOnWindowFocus: false,
   });
 
   return { Projects, refetch };

@@ -35,7 +35,7 @@ const ProjectsCards = () => {
               className="border-2 p-7 hover:-translate-y-5  transition-all duration-500 group border-green-500 rounded-xl"
             >
               <div>
-                <div className="bg-white relative flex justify-center items-center w-full h-40 rounded-xl">
+                <div className="bg-white z-40 relative flex justify-center items-center w-full h-40 rounded-xl">
                   <div className="flex items-center text-4xl font-bold text-gray-400 group-hover:scale-110 transition-all duration-500">
                     <h1>400 </h1>
                     <CgClose />

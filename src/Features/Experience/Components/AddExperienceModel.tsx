@@ -6,7 +6,7 @@ const AddExperienceModel = () => {
   const { handleAddExperience, handleSubmit, register } = useAddExperience();
   return (
     <>
-      <div className="relative text-white bg-slate-800 p-4 rounded-lg  left-[19pc] border-2 border-gray-600 w-[30pc]">
+      <div className="relative text-white bg-slate-800 p-4 rounded-lg  left-[19pc] max-sm:left-0 border-2 border-gray-600 w-[30pc] max-sm:w-[21.6pc] max-sm:mx-3">
         <form
           onSubmit={handleSubmit(handleAddExperience)}
           className="grid grid-cols-2 gap-4 w-full"

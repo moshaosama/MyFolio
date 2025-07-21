@@ -17,11 +17,12 @@ const SkillsRender = () => {
       <div className={cn(Container)}>
         <div className="mx-28 max-sm:mx-0 py-10 w-[67pc] max-sm:w-full grid grid-cols-6 relative max-sm:grid-cols-2 gap-10">
           {Skills?.skills?.map(
-            (skill: { skills: string; image: string; id: number }) => (
+            (skill: { skills: string; image_skill: string; id: number }) => (
               <div
                 key={skill.id}
-                className=" relative rounded-xl hover:shadow-xl transition-all duration-500 hover:shadow-white h-24 hover:bg-slate-700 flex justify-center items-center group"
+                className=" relative rounded-xl hover:shadow-xl transition-all duration-500 hover:shadow-white h-24 hover:bg-slate-700 flex flex-col justify-center items-center group"
               >
+                <img src={skill.image_skill} />
                 <h1 className="text-white font-bold text-xl group-hover:scale-110 transition-all duration-500">
                   {skill.skills}
                 </h1>

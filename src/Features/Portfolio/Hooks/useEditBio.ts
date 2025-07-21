@@ -21,7 +21,7 @@ const useEditBio = () => {
     if (User?.Bio) {
       reset({ Bio: User.Bio });
     }
-  }, []);
+  }, [User?.Bio]);
 
   const [isOpenEditBio, setIsOpenEditBio] = useState(false);
 
@@ -29,8 +29,15 @@ const useEditBio = () => {
     mutationKey: ["EditBio"],
     mutationFn: dataUserIdService.EditBio,
     onSuccess: async (data) => {
-      setIsOpenEditBio(false);
-      await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
+      try {
+        const updatedUser = data?.user?.[0];
+        if (updatedUser) {
+          localStorage.setItem("User", JSON.stringify(updatedUser));
+        }
+        setIsOpenEditBio(false);
+      } catch (err) {
+        console.error("Failed to update localStorage with new user data", err);
+      }
     },
   });
 

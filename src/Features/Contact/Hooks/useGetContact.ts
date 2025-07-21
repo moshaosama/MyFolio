@@ -8,6 +8,7 @@ const useGetContact = () => {
     queryKey: ["getContact", [User?.id]],
     queryFn: () => contactService.getContact(User?.id),
     enabled: !!User?.id,
+    refetchOnWindowFocus: false,
   });
 
   return { refetch, Contact };

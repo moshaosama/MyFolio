@@ -30,9 +30,7 @@ const useCreateUser = () => {
 
   const handleCreateUser = async () => {
     await CreateUser();
-    await CreateLinksByUser({
-      userId: User?.id,
-    });
+    await CreateLinksByUser(User?.id);
     navigate("/template");
   };
   return { handleCreateUser };

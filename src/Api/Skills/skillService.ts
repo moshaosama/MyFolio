@@ -7,7 +7,7 @@ class SkillService extends ParentService {
     thunkApi?: any
   ) {
     try {
-      const response = await axios.post("http://localhost:3000/create-skill", {
+      const response = await axios.post("https://myfolioserver-production.up.railway.app/create-skill", {
         skill_name: data?.skill_name,
         userId: data?.userId,
       });
@@ -19,7 +19,7 @@ class SkillService extends ParentService {
   async GetData(user_id?: number, thunkApi?: any) {
     try {
       const response = await axios.get(
-        `http://localhost:3000/get-skills/${user_id}`
+        `https://myfolioserver-production.up.railway.app/get-skills/${user_id}`
       );
       return response.data;
     } catch (err) {
@@ -30,7 +30,7 @@ class SkillService extends ParentService {
   async DeleteSkill(skill_id?: number, thunkApi?: any) {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/delete-skill/${skill_id}`
+        `https://myfolioserver-production.up.railway.app/delete-skill/${skill_id}`
       );
       return response.data;
     } catch (err) {

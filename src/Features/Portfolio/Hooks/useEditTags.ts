@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { dataUserIdService } from "../../../Api/DataByUserId/DataUserIdService";
 import useGetUser from "./useGetUser";
 import { useForm } from "react-hook-form";
-import { userService } from "../../../Api/User/UserService";
+
 import { useOpenEditTagsContext } from "../Context/EditTagsModelContext";
 
 const useEditTags = () => {
@@ -17,24 +17,12 @@ const useEditTags = () => {
     },
   });
 
-  const { refetch } = useQuery({
-    queryKey: ["getUser"],
-    queryFn: () => userService.GetData(User?.id),
-    enabled: !!User?.id,
-  });
-
   const { mutateAsync: handleEditTagsMutate } = useMutation({
     mutationKey: ["editTags"],
     mutationFn: dataUserIdService.EditTags,
-    onSuccess: async () => {
-      const newUser = await refetch();
+    onSuccess: async (data: any) => {
+      await window.localStorage.setItem("User", JSON.stringify(data?.user[0]));
 
-      if (newUser?.data?.user?.[0]) {
-        await window.localStorage.setItem(
-          "User",
-          JSON.stringify(newUser.data.user[0])
-        );
-      }
       TriggerOpenEditTags();
     },
   });

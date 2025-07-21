@@ -34,11 +34,11 @@ const ContactCard = ({
     <>
       <div
         id={id as string}
-        className="flex relative flex-col gap-10 rounded-xl w-96  hover:bg-slate-600/40 p-10 transition-all duration-300 justify-center items-center"
+        className="flex relative flex-col gap-10 rounded-xl w-full  hover:bg-slate-600/40 p-10 transition-all duration-300 justify-center items-center"
       >
         {isOpenEditContact === id ? null : (
           <div
-            className="absolute top-3 right-3 rounded-full  w-10 h-10  flex justify-center items-center cursor-pointer hover:bg-green-700"
+            className="absolute top-3 right-3 max-sm:top-0 rounded-full  w-10 h-10  flex justify-center items-center cursor-pointer hover:bg-green-700"
             style={{
               backgroundColor: backGroundColor,
             }}

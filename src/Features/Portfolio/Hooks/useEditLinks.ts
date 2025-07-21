@@ -12,6 +12,7 @@ const useEditLinks = () => {
     queryKey: ["getUser"],
     queryFn: () => userService.GetData(User?.id),
     enabled: !!User?.id,
+    refetchOnWindowFocus: false
   });
   const { mutate: handleEditLinksMutate } = useMutation({
     mutationKey: ["EditLink"],

@@ -138,7 +138,7 @@ width: 21.6pc; */}
             {isOpenAddExperience ? null : (
               <div
                 onClick={handleTriggerOpenAddExperience}
-                className="border-2 z-50 absolute right-[23pc] max-sm:mx-3 max-sm:w-[21.6pc]  max-sm:right-0  border-gray-500 cursor-pointer hover:scale-105 transition-all duration-300 bg-[#0f0d14] w-72 rounded-xl flex flex-col items-center py-4 gap-4 justify-center "
+                className="border-2 z-50 absolute right-[23pc] max-sm:mx-3 max-sm:w-[24.6pc]  max-sm:right-0  border-gray-500 cursor-pointer hover:scale-105 transition-all duration-300 bg-[#0f0d14] w-72 rounded-xl flex flex-col items-center py-4 gap-4 justify-center "
               >
                 <i>
                   <IoMdAdd size={70} color="blue" />

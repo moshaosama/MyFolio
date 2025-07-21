@@ -13,7 +13,7 @@ const ContactRenders = () => {
   return (
     <>
       <div className={Container}>
-        <div className="mx-28 flex justify-between gap-10">
+        <div className="mx-28 max-sm:mx-0 grid grid-cols-3 max-sm:grid-cols-1 gap-10">
           <ContactCard
             id={1}
             Icon={<AiOutlineMail size={30} color="green" />}

@@ -10,7 +10,7 @@ const Links = () => {
   const { User } = useGetUser();
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex max-sm:flex-col max-sm:justify-center items-center justify-between">
         <button className="group relative bg-gradient-to-l p-5 w-60 text-white hover:shadow-lg shadow-[#2a7b9b] hover:scale-105 transition-all duration-300 font-bold rounded-xl cursor-pointer  text-lg my-10 from-[#2a7b9b] to-[#57c785]">
           <a href={User?.ResumeLink}>
             <div className="flex gap-4 items-center justify-center">

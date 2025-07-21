@@ -5,13 +5,13 @@ import { experienceService } from "../../../Api/Experience/ExperienceService";
 const useGetExperience = () => {
   const { User } = useGetUser();
 
-  const { data: Experience } = useQuery({
+  const { data: Experience, refetch } = useQuery({
     queryKey: ["getExperience", [User?.id]],
     queryFn: () => experienceService.GetData(User?.id),
     enabled: !!User?.id,
   });
 
-  return { Experience };
+  return { Experience, refetch };
 };
 
 export default useGetExperience;

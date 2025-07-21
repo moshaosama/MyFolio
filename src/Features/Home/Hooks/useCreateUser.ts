@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
 import { userService } from "../../../Api/User/UserService";
-// import { navbarService } from "../../../Api/Navbar/NavbarService";
+import { navbarService } from "../../../Api/Navbar/NavbarService";
 import { useNavigate } from "react-router-dom";
-// import useGetUser from "../../Portfolio/Hooks/useGetUser";
+import useGetUser from "../../Portfolio/Hooks/useGetUser";
 
 const useCreateUser = () => {
-  // const { User } = useGetUser();
+  const { User } = useGetUser();
   const { mutateAsync: CreateUser } = useMutation({
     mutationKey: ["createUser"],
     mutationFn: () => userService.CreateData(),
@@ -21,19 +21,18 @@ const useCreateUser = () => {
     },
   });
 
-  // const { mutateAsync: CreateLinksByUser } = useMutation({
-  //   mutationKey: ["createLink"],
-  //   mutationFn: (user_id) => navbarService.CreateData(user_id),
-  //   onSuccess: () => {
-  //     console.log("Success Created!");
-  //   },
-  // });
+  const { mutateAsync: CreateLinksByUser } = useMutation({
+    mutationKey: ["createLink"],
+    mutationFn: navbarService.CreateData,
+  });
 
   const navigate = useNavigate();
 
   const handleCreateUser = async () => {
     await CreateUser();
-    // await CreateLinksByUser(User?.id);
+    await CreateLinksByUser({
+      userId: User?.id,
+    });
     navigate("/template");
   };
   return { handleCreateUser };

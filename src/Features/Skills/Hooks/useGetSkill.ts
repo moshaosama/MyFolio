@@ -8,6 +8,7 @@ const useGetSkill = () => {
     queryKey: ["getSkills", [User?.id]],
     queryFn: () => skillService.GetData(User?.id),
     enabled: !!User?.id,
+    refetchOnWindowFocus: false,
   });
 
   return { Skills, refetch };

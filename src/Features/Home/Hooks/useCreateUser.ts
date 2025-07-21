@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { userService } from "../../../Api/User/UserService";
 import { navbarService } from "../../../Api/Navbar/NavbarService";
+import { useNavigate } from "react-router-dom";
 
 const useCreateUser = () => {
   const { mutateAsync: CreateUser } = useMutation({
@@ -26,16 +27,17 @@ const useCreateUser = () => {
     },
   });
 
+  const navigate = useNavigate();
+
   const handleCreteUser = async () => {
     const data = await CreateUser();
-
     const createdUser = data?.user?.[0];
 
     if (createdUser?.id) {
       await CreateLinksByUser(createdUser.id);
+      navigate("/template");
     }
   };
-
   return { handleCreteUser };
 };
 

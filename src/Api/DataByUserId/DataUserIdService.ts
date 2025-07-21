@@ -10,9 +10,7 @@ export type FieldValue =
 class DataUserIdService {
   async getLinks(userId?: any, thunkApi?: any) {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/links/${userId}`
-      );
+      const response = await axios.get(`https://myfolioserver-production.up.railway.app/links/${userId}`);
       return response.data;
     } catch (err) {
       return thunkApi.rejectWithValue(err);
@@ -21,7 +19,7 @@ class DataUserIdService {
   async DeleteLink(data: { linkName: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/links/${data.userId}`,
+        `https://myfolioserver-production.up.railway.app/links/${data.userId}`,
         {
           data: {
             linkName: data.linkName,
@@ -35,14 +33,17 @@ class DataUserIdService {
   }
 
   async EditImageUser(
-    data?: { userId: number; imageName: string },
+    data?: { userId: number; imageName: FormData },
     thunkApi?: any
   ) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-image/${data?.userId}`,
+        `https://myfolioserver-production.up.railway.app/edit-image/${data?.userId}`,
+        data?.imageName,
         {
-          imageName: data?.imageName,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
       return response.data;
@@ -54,7 +55,7 @@ class DataUserIdService {
   async EditTags(data?: { Tags: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-tags/${data?.userId}`,
+        `https://myfolioserver-production.up.railway.app/edit-tags/${data?.userId}`,
         {
           Tags: data?.Tags,
         }
@@ -68,7 +69,7 @@ class DataUserIdService {
   async EditName(data?: { Name: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-name/${data?.userId}`,
+        `https://myfolioserver-production.up.railway.app/edit-name/${data?.userId}`,
         {
           Name: data?.Name,
         }
@@ -82,7 +83,7 @@ class DataUserIdService {
   async EditBio(data?: { Bio: string; userId: number }, thunkApi?: any) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-bio/${data?.userId}`,
+        `https://myfolioserver-production.up.railway.app/edit-bio/${data?.userId}`,
         {
           Bio: data?.Bio,
         }
@@ -99,7 +100,7 @@ class DataUserIdService {
   ) {
     try {
       const response = await axios.put(
-        `http://localhost:3000/edit-links/${data?.userId}`,
+        `https://myfolioserver-production.up.railway.app/edit-links/${data?.userId}`,
         {
           [data?.Field!]: data?.value,
         }

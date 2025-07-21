@@ -2,6 +2,7 @@ import ContactHeader from "../../Features/Contact/Components/ContactHeader";
 import ContactRenders from "../../Features/Contact/Components/ContactRenders";
 import ExperienceHeader from "../../Features/Experience/Components/ExperienceHeader";
 import ExperienceRender from "../../Features/Experience/Components/ExperienceRender";
+import OpenAddExperienceProvider from "../../Features/Experience/Context/OpenAddExperience";
 import Hero from "../../Features/Portfolio/Components/Hero";
 import EditTagsModelProvider from "../../Features/Portfolio/Context/EditTagsModelContext";
 import ProjectsCards from "../../Features/Projects/Components/ProjectsCards";
@@ -33,8 +34,10 @@ const Template = () => {
             )}
             {isFound.Experience && (
               <>
-                <ExperienceHeader />
-                <ExperienceRender />
+                <OpenAddExperienceProvider>
+                  <ExperienceHeader />
+                  <ExperienceRender />
+                </OpenAddExperienceProvider>
               </>
             )}
             {isFound.Contact && (

@@ -11,10 +11,10 @@ const Hero = () => {
   const { User } = useGetUser();
   return (
     <div className={cn(Container)}>
-      <div className="py-24 mx-28 max-sm:mx-0 relative flex max-sm:flex-col gap-28">
+      <div className="py-24 mx-28 max-sm:mx-0  relative flex max-sm:flex-col gap-28">
         <div>
           {User?.Image === null ? (
-            <div className="bg-[#bbb] group hover:shadow-lg hover:shadow-blue-300 transition-all duration-300  w-80 rounded-xl">
+            <div className="bg-[#bbb] group hover:shadow-lg hover:shadow-blue-300 transition-all duration-300  w-80 max-sm:w-full rounded-xl">
               <div className="w-10 h-10 border-t-[7px] border-l-[7px] border-l-blue-300 border-t-blue-500 rounded-tl-xl absolute top-16 -left-7 transition-all duration-300 opacity-0 group-hover:opacity-100"></div>
               <div className="flex m-3  justify-end cursor-pointer">
                 <div className="p-4">
@@ -31,7 +31,7 @@ const Hero = () => {
                   />
                 </div>
               </div>
-              <div className=" group-hover:scale-[1.2] transition-all duration-300 text-5xl text-gray-500/50  font-bold h-[26pc] flex justify-center items-center">
+              <div className=" group-hover:scale-[1.2] transition-all duration-300 text-5xl max-sm:text-2xl text-gray-500/50  font-bold h-[26pc] flex justify-center items-center">
                 <div className="flex items-center">
                   <h1>400 </h1>
                   <CgClose />

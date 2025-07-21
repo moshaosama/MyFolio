@@ -25,7 +25,7 @@ const LinksIcons = () => {
 
           <i
             onClick={TriggerOpenEditGithub}
-            className="absolute hidden group-hover:block -left-4 -top-6"
+            className="absolute hidden max-sm:block group-hover:block -left-4 -top-6"
           >
             <CiShare1 color="white" size={25} className="cursor-pointer" />
           </i>
@@ -42,7 +42,7 @@ const LinksIcons = () => {
 
           <i
             onClick={TriggerOpenEditLinkedin}
-            className="absolute hidden group-hover:block -left-4 -top-6"
+            className="absolute hidden max-sm:block group-hover:block -left-4 -top-6"
           >
             <CiShare1 color="white" size={25} className="cursor-pointer" />
           </i>
@@ -59,7 +59,7 @@ const LinksIcons = () => {
 
           <i
             onClick={TriggerOpenEditTwitter}
-            className="absolute hidden group-hover:block -left-4 -top-6"
+            className="absolute hidden max-sm:block group-hover:block -left-4 -top-6"
           >
             <CiShare1 color="white" size={25} className="cursor-pointer" />
           </i>
@@ -76,7 +76,7 @@ const LinksIcons = () => {
 
           <i
             onClick={TriggerOpenEditMedium}
-            className="absolute hidden group-hover:block -left-4 -top-6"
+            className="absolute hidden max-sm:block group-hover:block -left-4 -top-6"
           >
             <CiShare1 color="white" size={25} className="cursor-pointer" />
           </i>

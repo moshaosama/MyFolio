@@ -2,7 +2,6 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import PopUpCard from "../../../Components/PopUpCard";
 import { useOpenPopUpTemplateContext } from "../Context/useOpenPopUpTemplate";
 import cn from "../../../libs/cn";
-import { Link } from "react-router";
 import useCreateUser from "../../Home/Hooks/useCreateUser";
 
 const PopUpTemplates = () => {
@@ -46,14 +45,10 @@ const PopUpTemplates = () => {
                 A clean, modern portfolio template with smooth animations and
                 professional design
               </p>
-              <Link
-                to={"/template"}
-                className="bg-gradient-to-l flex justify-center  py-2 rounded-xl cursor-pointer from-purple-600 hover:from-purple-800 to-blue-600 hover:to-blue-800 transition-all duration-300"
-              >
-                <button onClick={handleCreateUser} className="cursor-pointer">
-                  Use Template
-                </button>
-              </Link>
+
+              <button onClick={handleCreateUser} className="cursor-pointer">
+                Use Template
+              </button>
             </div>
           </div>
 

@@ -34,9 +34,7 @@ const About = () => {
         >
           <CiShare1 />
         </div>
-        <h1 className="text-sm">
-          ✨ {typeof startText === "string" ? JSON.parse(startText) : ""}
-        </h1>
+        <h1 className="text-sm">✨ {startText}</h1>
       </div>
 
       <div className="mt-3">

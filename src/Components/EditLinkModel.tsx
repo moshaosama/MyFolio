@@ -22,7 +22,7 @@ const EditLinkModel = ({
   return (
     <>
       <div className="bg-black/60 w-full h-[100vh] fixed flex justify-center items-center top-0 left-0">
-        <div className="bg-slate-800 text-white shadow-2xl shadow-slate-800 w-[30pc]  p-4 rounded-xl">
+        <div className="bg-slate-800 text-white max-sm:mx-3 shadow-2xl shadow-slate-800 w-[30pc]  p-4 rounded-xl">
           <h1 className="text-lg font-semibold">{Title}</h1>
 
           <form className="mt-4" onSubmit={onSubmit}>

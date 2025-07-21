@@ -28,6 +28,7 @@ const useNavbarLinks = () => {
     queryKey: ["databyUser"],
     enabled: !!User?.id,
     queryFn: () => dataUserIdService.getLinks(User.id),
+    refetchOnWindowFocus: false,
   });
 
   const { mutate } = useMutation({

@@ -16,7 +16,7 @@ class ExperienceService extends ParentService {
   ) {
     try {
       const response = await axios.post(
-        `http://localhost:3000/create-experience/${data?.user_id}`,
+        `https://myfolioserver-production.up.railway.app/create-experience/${data?.user_id}`,
         {
           Date: data?.Date,
           Title: data?.Title,
@@ -35,7 +35,7 @@ class ExperienceService extends ParentService {
   async GetData(userId?: number, thunkApi?: any) {
     try {
       const response = await axios.get(
-        `http://localhost:3000/get-experience/${userId}`
+        `https://myfolioserver-production.up.railway.app/get-experience/${userId}`
       );
 
       return response.data;
@@ -47,7 +47,7 @@ class ExperienceService extends ParentService {
   async DeleteExperience(experience_id?: number, thunkApi?: any) {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/delete-experience/${experience_id}`
+        `https://myfolioserver-production.up.railway.app/delete-experience/${experience_id}`
       );
 
       return response.data;

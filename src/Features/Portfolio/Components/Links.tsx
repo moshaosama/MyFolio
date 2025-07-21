@@ -23,7 +23,7 @@ const Links = () => {
 
           <i
             onClick={TriggerOpenEditResume}
-            className="absolute hidden group-hover:block -right-4 -top-6"
+            className="absolute hidden max-sm:block group-hover:block -right-4 -top-6"
           >
             <CiShare1 color="white" size={25} className="cursor-pointer" />
           </i>

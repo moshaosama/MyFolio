@@ -4,7 +4,9 @@ import { ParentService } from "../parentService";
 class UserService extends ParentService {
   async CreateData(_?: any, thunkApi?: any) {
     try {
-      const response = await axios.post(`${this.url}create-new-user`);
+      const response = await axios.post(
+        `https://myfolioserver-production.up.railway.app/create-new-user`
+      );
       return response.data;
     } catch (err) {
       return thunkApi.rejectWithValue(err);
@@ -12,7 +14,9 @@ class UserService extends ParentService {
   }
   async GetData(userId?: number, thunkApi?: any) {
     try {
-      const response = await axios.get(`${this.url}get-user/${userId}`);
+      const response = await axios.get(
+        `https://myfolioserver-production.up.railway.app/get-user/${userId}`
+      );
       return response.data;
     } catch (err) {
       return thunkApi.rejectWithValue(err);

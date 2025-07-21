@@ -5,7 +5,7 @@ class NavbarService extends ParentService {
   async CreateData(userId?: any, thunkApi?: any) {
     try {
       const response = await axios.post(
-        `http://localhost:3000/create-links`,
+        `https://myfolioserver-production.up.railway.app/create-links`,
         {
           userId: userId,
         }

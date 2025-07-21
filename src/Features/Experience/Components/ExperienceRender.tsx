@@ -1,4 +1,4 @@
-import { IoMdAdd } from "react-icons/io";
+import { IoMdAdd, IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 import cn from "../../../libs/cn";
 import useGetExperience from "../Hooks/useGetExperience";
 import { GiGraduateCap } from "react-icons/gi";
@@ -6,6 +6,12 @@ import AddExperienceModel from "./AddExperienceModel";
 import { useOpenExperienceContext } from "../Context/OpenAddExperience";
 import { MdDelete } from "react-icons/md";
 import useDeleteExperience from "../Hooks/useDeleteExperience";
+import { FaCode, FaLaptopCode } from "react-icons/fa";
+{
+  /* <GiGraduateCap /> */
+  //   <FaCode />
+  //   <FaLaptopCode />
+}
 
 const ExperienceRender = () => {
   const { Experience } = useGetExperience();
@@ -35,9 +41,22 @@ const ExperienceRender = () => {
                         experience?.Position === "left" && "left-[30.2pc]"
                       )}
                     >
-                      <GiGraduateCap color="white" size={40} />
+                      {experience?.Icon === "Education" && (
+                        <GiGraduateCap color="white" size={40} />
+                      )}
+                      {experience?.Icon === "Development" && (
+                        <FaCode color="white" size={35} />
+                      )}
+                      {experience?.Icon === "Programming" && (
+                        <FaLaptopCode color="white" size={35} />
+                      )}
                     </i>
                     <div className="text-white relative bg-slate-800 p-4 rounded-lg w-full">
+                      <div className="absolute top-0 left-[27pc]">
+                        <i>
+                          <IoMdArrowDropright size={50} />
+                        </i>
+                      </div>
                       <p className="text-sm text-gray-400">
                         {experience?.Date}
                       </p>
@@ -66,6 +85,11 @@ const ExperienceRender = () => {
                 {experience?.Position === "right" && (
                   <>
                     <div className="text-white relative bg-slate-800 p-4 rounded-lg w-full">
+                      <div className="absolute top-0 right-[27pc]">
+                        <i>
+                          <IoMdArrowDropleft size={50} />
+                        </i>
+                      </div>
                       <p className="text-sm text-gray-400">
                         {experience?.Date}
                       </p>
@@ -93,7 +117,15 @@ const ExperienceRender = () => {
                         experience?.Position === "right" && "right-[30.2pc]"
                       )}
                     >
-                      <GiGraduateCap color="white" size={40} />
+                      {experience?.Icon === "Education" && (
+                        <GiGraduateCap color="white" size={40} />
+                      )}
+                      {experience?.Icon === "Development" && (
+                        <FaCode color="white" size={35} />
+                      )}
+                      {experience?.Icon === "Programming" && (
+                        <FaLaptopCode color="white" size={35} />
+                      )}
                     </i>
                   </>
                 )}

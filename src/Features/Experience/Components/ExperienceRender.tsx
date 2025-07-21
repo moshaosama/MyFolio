@@ -21,7 +21,7 @@ const ExperienceRender = () => {
 
   return (
     <>
-      <div className="flex justify-center mt-10">
+      <div className="flex justify-center mt-10 z-40">
         <div className="relative  flex flex-col items-center w-full max-w-5xl">
           <div className="absolute w-1  bg-white max-sm:hidden h-full left-1/2  -translate-x-1/2 z-10" />
 

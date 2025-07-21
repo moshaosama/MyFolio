@@ -46,7 +46,10 @@ const PopUpTemplates = () => {
                 professional design
               </p>
 
-              <button onClick={handleCreateUser} className="cursor-pointer">
+              <button
+                onClick={handleCreateUser}
+                className="cursor-pointer bg-gradient-to-l flex justify-center  py-2 rounded-xl  from-purple-600 hover:from-purple-800 to-blue-600 hover:to-blue-800 transition-all duration-300"
+              >
                 Use Template
               </button>
             </div>

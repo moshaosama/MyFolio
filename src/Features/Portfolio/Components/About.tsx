@@ -46,7 +46,7 @@ const About = () => {
               defaultValue={User?.Name}
               {...register("Name", { required: true })}
               onMouseLeave={handleSubmit(handlEditName)}
-              className="text-5xl max-sm:text-3xl font-extrabold bg-gradient-to-l bg-clip-text w-[26pc] max-sm:w-20 from-[#2a7b9b] to-[#57c785] text-transparent focus:outline-0 focus:border-b-2 focus:border-b-purple-400 wrap-break-word"
+              className="text-5xl max-sm:text-3xl font-extrabold bg-gradient-to-l bg-clip-text w-[26pc] max-sm:w-[21.8pc] from-[#2a7b9b] to-[#57c785] text-transparent focus:outline-0 focus:border-b-2 focus:border-b-purple-400 wrap-break-word"
             />
           </form>
 

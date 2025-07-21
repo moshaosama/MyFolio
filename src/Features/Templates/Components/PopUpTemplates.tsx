@@ -6,7 +6,7 @@ import useCreateUser from "../../Home/Hooks/useCreateUser";
 
 const PopUpTemplates = () => {
   const { isOpen, triggerOpenPopUp } = useOpenPopUpTemplateContext();
-  const { handleCreteUser } = useCreateUser();
+  const { handleCreateUser } = useCreateUser();
   return (
     <div
       className={cn(
@@ -46,7 +46,7 @@ const PopUpTemplates = () => {
                 professional design
               </p>
 
-              <button onClick={handleCreteUser} className="cursor-pointer">
+              <button onClick={handleCreateUser} className="cursor-pointer">
                 Use Template
               </button>
             </div>

@@ -12,7 +12,7 @@ const useEditLinks = () => {
     queryKey: ["getUser"],
     queryFn: () => userService.GetData(User?.id),
     enabled: !!User?.id,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   });
   const { mutate: handleEditLinksMutate } = useMutation({
     mutationKey: ["EditLink"],
@@ -34,7 +34,7 @@ const useEditLinks = () => {
     });
   };
 
-  return { register, handleEditLinks, handleSubmit };
+  return { register, handleEditLinks, handleSubmit, refetch };
 };
 
 export default useEditLinks;

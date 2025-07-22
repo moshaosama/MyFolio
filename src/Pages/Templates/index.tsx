@@ -1,3 +1,4 @@
+import PopUpChat from "../../Features/Chatgbt/Components/PopUpChat";
 import ContactHeader from "../../Features/Contact/Components/ContactHeader";
 import ContactRenders from "../../Features/Contact/Components/ContactRenders";
 import ExperienceHeader from "../../Features/Experience/Components/ExperienceHeader";
@@ -16,7 +17,7 @@ const Template = () => {
 
   return (
     <>
-      <div className="bg-[#0f0d14]">
+      <div className="bg-[#0f0d14] relative">
         <EditTagsModelProvider>
           <OpenSkillProvider>
             {isFound.About && <Hero />}
@@ -48,6 +49,8 @@ const Template = () => {
             )}
           </OpenSkillProvider>
         </EditTagsModelProvider>
+
+        <PopUpChat />
       </div>
     </>
   );

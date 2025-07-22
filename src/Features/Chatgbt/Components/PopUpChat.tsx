@@ -1,0 +1,79 @@
+import { CgClose } from "react-icons/cg";
+import { LuBot } from "react-icons/lu";
+import useOpenChatBot from "../Hooks/useOpenChatBot";
+
+const PopUpChat = () => {
+  const {
+    handleTriggerChatBot,
+    isOpenChatBot,
+    handleStartChat,
+    StartChat,
+    register,
+    handleSubmit,
+    handleSendMessage,
+    SendMessages,
+  } = useOpenChatBot();
+
+  return (
+    <>
+      <div>
+        {!isOpenChatBot && (
+          <button
+            onClick={() => {
+              handleTriggerChatBot();
+              handleStartChat();
+            }}
+            className="fixed bottom-10 right-10 w-12 h-12 rounded-full flex justify-center items-center bg-blue-600 text-white hover:bg-blue-800 cursor-pointer transition-all duration-300"
+          >
+            <LuBot size={30} />
+          </button>
+        )}
+
+        {isOpenChatBot && (
+          <div className="border-2 rounded-xl z-50  text-white fixed right-10 bottom-24 border-gray-500 w-[30pc]">
+            <div className="bg-black rounded-t-lg">
+              <div className="mx-3  flex justify-between items-center py-4">
+                <div>
+                  <h1 className="text-2xl font-bold">FolioBot</h1>
+                </div>
+                <div onClick={handleTriggerChatBot}>
+                  <CgClose size={20} className="cursor-pointer" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gray-500 rounded-b-lg py-3 flex flex-col gap-5">
+              <div className="mx-3 bg-white relative left-0 text-black py-3 rounded-lg px-2 w-1/2">
+                <div>{JSON.parse(StartChat!)?.message}</div>
+              </div>
+
+              <div className="mx-3 bg-white relative left-52 text-black py-3 rounded-lg px-2 w-1/2">
+                <div>
+                  {SendMessages?.map((message) => (
+                    <h1>{message.message}</h1>
+                  ))}
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit(handleSendMessage)}>
+                <p className="flex gap-3 mx-1">
+                  <input
+                    type="text"
+                    placeholder="Enter Your text.."
+                    className="p-2 text-black bg-white rounded-lg w-full"
+                    {...register("message", { required: true })}
+                  />
+                  <button className="bg-green-500 rounded-xl font-bold cursor-pointer hover:bg-green-700 transition-all duration-300 w-20">
+                    Send
+                  </button>
+                </p>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default PopUpChat;

@@ -9,6 +9,8 @@ type Message = { message: string };
 const useOpenChatBot = () => {
   const [isOpenChatBot, setIsOpenChatBot] = useState(false);
   const [SendMessages, setSendMessages] = useState<Message[]>([]);
+  const [ChatMessage, setChatMessag] = useState<Message[]>([]);
+  const [isResponse, setIsResponse] = useState<boolean>(false);
   const { refetch } = useEditLinks();
   const { User } = useGetUser();
   const { handleSubmit, register } = useForm();
@@ -22,6 +24,13 @@ const useOpenChatBot = () => {
         window.localStorage.setItem("User", JSON.stringify(userData));
       }
       refetch();
+      setIsResponse(true);
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      setIsResponse(false);
+      setChatMessag((prev) => {
+        const updated = [...prev, { message: data.message }];
+        return updated;
+      });
     },
   });
 
@@ -30,6 +39,11 @@ const useOpenChatBot = () => {
     mutationFn: chatgbtService.StartChat,
     onSuccess: (data: any) => {
       window.localStorage.setItem("Chat", JSON.stringify(data));
+
+      setChatMessag((prev) => {
+        const updated = [...prev, { message: data.message }];
+        return updated;
+      });
     },
   });
 
@@ -67,8 +81,10 @@ const useOpenChatBot = () => {
     StartChat,
     handleSendMessage,
     SendMessages,
+    ChatMessage,
     register,
     handleSubmit,
+    isResponse,
   };
 };
 

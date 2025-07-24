@@ -5,7 +5,6 @@ interface DataEdit {
   project_id: number;
   title: string;
   description: string;
-  skills: string;
   githubLink: string;
   liveDemoLink: string;
 }
@@ -45,6 +44,45 @@ class ProjectService extends ParentService {
       return thunkApi.rejectWithValue(err);
     }
   }
+  async GetSkillProject(project_id?: number, thunkApi?: any) {
+    try {
+      const response = await axios.get(
+        `https://myfolioserver-production.up.railway.app/get-skill-project/skills/${project_id}`
+      );
+
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+
+  async DeleteSkillProject(skillProject_id?: number, thunkApi?: any) {
+    try {
+      const response = await axios.delete(
+        `https://myfolioserver-production.up.railway.app/delete-skill-project/skills/${skillProject_id}`
+      );
+
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
+
+  async CreateSkillProject(
+    data?: { skill_name: string; project_id: number },
+    thunkApi?: any
+  ) {
+    try {
+      const response = await axios.post(
+        `https://myfolioserver-production.up.railway.app/create-skill-project`,
+        data
+      );
+
+      return response.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(err);
+    }
+  }
 
   async EditProject(data?: DataEdit, thunkApi?: any) {
     try {
@@ -53,7 +91,6 @@ class ProjectService extends ParentService {
         {
           title: data?.title,
           description: data?.description,
-          skills: data?.skills,
           githubLink: data?.githubLink,
           liveDemoLink: data?.liveDemoLink,
         }

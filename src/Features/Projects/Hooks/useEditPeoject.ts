@@ -14,7 +14,6 @@ const useEditPeoject = () => {
     onSuccess: () => {
       refetch();
       setIsOpenEdit(null);
-      reset();
     },
   });
 
@@ -25,7 +24,6 @@ const useEditPeoject = () => {
       githubLink: data.githubLink,
       liveDemoLink: data.liveDemoLink,
       project_id: isOpenEdit as number,
-      skills: JSON.parse(data.skills),
     });
   };
   const handleTriggerOpenEdit = (projectId: number) => {

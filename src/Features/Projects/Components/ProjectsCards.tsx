@@ -11,11 +11,20 @@ import useDeleteProject from "../Hooks/useDeleteProject";
 import useEditPeoject from "../Hooks/useEditPeoject";
 import { GoX } from "react-icons/go";
 import { Link } from "react-router";
+import useGetSkillProject from "../Hooks/useGetProject";
+import useDeleteProjectSkill from "../Hooks/useDeleteProjectSkill";
+import useCreateSkillProject from "../Hooks/useCreateSkillProject";
 
 const ProjectsCards = () => {
   const { Projects } = useGetProjects();
   const { handleCreateNewProject } = useCreateProject();
   const { handleDeleteProject } = useDeleteProject();
+  const { SkillsProject } = useGetSkillProject();
+  const {
+    handleSubmitCreateSkillProject,
+    handleCreateSkillProject,
+    registerCreateSkillProject,
+  } = useCreateSkillProject();
   const {
     isOpenEdit,
     handleTriggerOpenEdit,
@@ -24,7 +33,7 @@ const ProjectsCards = () => {
     handleEditProject,
     handleSubmit,
   } = useEditPeoject();
-
+  const { handleDeleteSkillProject } = useDeleteProjectSkill();
   return (
     <>
       <div className={cn(Container)}>
@@ -109,51 +118,76 @@ const ProjectsCards = () => {
 
                 {isOpenEdit === projects.id ? (
                   <>
-                    <div className="grid grid-cols-3 gap-5">
-                      {(typeof projects.skills === "string"
-                        ? JSON.parse(projects.skills)
-                        : projects.skills
-                      )?.map((skill: { name: string }, index: number) => (
-                        <div
-                          key={index}
-                          className="bg-slate-900 text-center rounded-full  flex items-center justify-center"
-                        >
-                          <h1 className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
-                            {skill?.name}{" "}
-                            {isOpenEdit && <MdDelete color="red" />}
-                          </h1>
+                    {SkillsProject?.map((skills, index) => {
+                      return (
+                        <div className="grid grid-cols-3 gap-2" key={index}>
+                          {skills?.result
+                            ?.filter(
+                              (skill: any) => skill.project_id === projects?.id
+                            )
+                            ?.map((skill_project: any, i: number) => (
+                              <>
+                                <div className="flex gap-1">
+                                  <h1
+                                    key={i}
+                                    className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold"
+                                  >
+                                    {skill_project?.skill_name}
+                                  </h1>
+                                  <MdDelete
+                                    onClick={() =>
+                                      handleDeleteSkillProject(skill_project.id)
+                                    }
+                                    className="bg-red-600 text-xl rounded-full hover:bg-red-700 transition-all duration-300 cursor-pointer"
+                                    color="white"
+                                  />
+                                </div>
+                              </>
+                            ))}
                         </div>
-                      ))}
-                    </div>
-                    <div className="flex justify-between gap-2 items-center">
+                      );
+                    })}
+                    <form
+                      onSubmit={handleSubmitCreateSkillProject((data) =>
+                        handleCreateSkillProject(data, projects.id)
+                      )}
+                      className="flex justify-between gap-2 items-center"
+                    >
                       <input
                         type="text"
                         placeholder="Tag name"
                         defaultValue={projects?.skills}
                         className="bg-slate-800 p-2 w-full text-white rounded-lg"
-                        {...register("skills")}
+                        {...registerCreateSkillProject("skill_name", {
+                          required: true,
+                        })}
                       />
                       <button className="bg-blue-600 cursor-pointer hover:bg-blue-700 transition-all duration-200 p-2 rounded-xl text-white font-semibold ">
                         Add
                       </button>
-                    </div>
+                    </form>
                   </>
                 ) : (
-                  <div className="grid grid-cols-3 gap-5">
-                    {(typeof projects?.skills === "string"
-                      ? JSON.parse(projects.skills)
-                      : projects.skills
-                    )?.map((skill: { name: string }, index: number) => (
-                      <div
-                        key={index}
-                        className="bg-slate-900 text-center rounded-full flex items-center justify-center"
-                      >
-                        <h1 className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold">
-                          {skill?.name} {isOpenEdit && <MdDelete color="red" />}
-                        </h1>
-                      </div>
-                    ))}
-                  </div>
+                  <>
+                    {SkillsProject?.map((skills, index) => {
+                      return (
+                        <div className="grid grid-cols-3 gap-5" key={index}>
+                          {skills?.result
+                            ?.filter(
+                              (skill: any) => skill.project_id === projects?.id
+                            )
+                            ?.map((skill_project: any, i: number) => (
+                              <h1
+                                key={i}
+                                className="bg-gradient-to-l from-green-700 to-purple-700 bg-clip-text text-transparent font-bold"
+                              >
+                                {skill_project?.skill_name}
+                              </h1>
+                            ))}
+                        </div>
+                      );
+                    })}
+                  </>
                 )}
 
                 {isOpenEdit === projects.id ? (
